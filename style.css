@@ -1,0 +1,109 @@
+.logo {
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url("bgpoke2.png");
+    background-color: #cccc;
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+.logo h1 {
+    padding-left: 15rem;
+    color: rgb(51, 51, 185);
+    filter: none;
+}
+.logo #pokeball {
+    height: 20vh;
+    width: 10vw;
+    margin-left: 25rem;
+    margin-top: 3rem;
+}
+.logo #pokeball:hover {
+    cursor: pointer;
+}
+.logo #pokemonlogo {
+    width: 50vw;
+    height: 40vh;
+}
+.pokemonDisplay {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+.boxHeader img {
+    height: 7vh;
+    width: 7vw;
+}
+.pokemonDisplay #activeImg, #activeShinyImg {
+    max-height: 4.5vh;
+    max-width: 4.5vw;
+}
+.pokemon {
+    background-color: rgb(202, 202, 202);
+    margin: 1rem 1rem 1rem 1rem;
+    border: 1px solid black;
+    width: 20vw;
+    border-radius: 7px;
+}
+.boxHeader {
+    background-color: rgb(139, 139, 139);
+    display: flex;
+    height: 30vh;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+.boxBody {
+    background-color: rgb(202, 202, 202);
+    display: flex;
+    height: 30vh;
+    flex-flow: column wrap;
+    align-items: center;
+}
+.boxBody img {
+    align-self: flex-start;
+    padding-left: 2rem;
+    height: 10vh;
+    width: 10vh;
+}
+.boxBody button {
+    border: 1px solid black;
+    border-radius: 25px;
+    background-color: black;
+    color: white;
+    width: 3.5vw;
+    height: 2.2vh;
+}
+.buttonsTop #buttonAB{
+    width: 2vw;
+    height: 4vh;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+.boxBody button:hover {
+    cursor:pointer;
+}
+.displayBox {
+    border: 1px solid black;
+    margin: 1rem;
+}
+.displayInnerBox {
+    border: 10px solid black;
+}
+.pokemon h1 {
+    font-size: 2em;
+    margin: 0rem;
+}
+.pokemon h2 {
+    font-size: 1.3em;
+    margin: 0rem;
+}
+.pokemon h3 {
+    font-size: .8em;
+    padding-left: 1.5rem;
+}
+html {
+    margin: 0;
+    width: 100%;
+}
