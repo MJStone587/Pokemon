@@ -26,25 +26,42 @@
     width: 50vw;
     height: 40vh;
 }
+
+/* Below pokemon.html files */
+.header {
+    display:flex;
+    flex-flow: column nowrap;
+}
+.header #submit {
+    border: 2px solid black;
+    background-color: gray;
+    color: black;
+    font-weight: bold;
+    font-size: 1em;
+    border-radius: 5px;
+}
 .pokemonDisplay {
+    border: 1px solid black;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
+.pokemonDisplay #activeImg, #activeShinyImg {
+    height: 6vh;
+    width: 6vw;
+}
+.gameboy {
+    background-color: rgb(172, 171, 171);
+    margin: 1rem 1rem 1rem 1rem;
+    border: 2px solid black;
+    width: 20vw;
+    border-radius: 7px;
 }
 .boxHeader img {
     height: 7vh;
     width: 7vw;
-}
-.pokemonDisplay #activeImg, #activeShinyImg {
-    max-height: 4.5vh;
-    max-width: 4.5vw;
-}
-.pokemon {
-    background-color: rgb(202, 202, 202);
-    margin: 1rem 1rem 1rem 1rem;
-    border: 1px solid black;
-    width: 20vw;
-    border-radius: 7px;
 }
 .boxHeader {
     background-color: rgb(139, 139, 139);
@@ -55,7 +72,7 @@
     align-items: center;
 }
 .boxBody {
-    background-color: rgb(202, 202, 202);
+    background-color: rgb(172, 171, 171);
     display: flex;
     height: 30vh;
     flex-flow: column wrap;
@@ -75,33 +92,51 @@
     width: 3.5vw;
     height: 2.2vh;
 }
+.buttonsTop {
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding-top: 1rem;
+}
 .buttonsTop #buttonAB{
     width: 2vw;
     height: 4vh;
     border: 1px solid black;
     border-radius: 50%;
 }
-.boxBody button:hover {
+.buttonsTop img {
+    padding-right: 7rem;
+}
+.buttonsBot {
+    padding: 3rem 0rem 0rem 0rem;
+}
+.buttonsBot button:hover {
     cursor:pointer;
 }
-.displayBox {
+.gameboyDisplayBox {
     border: 1px solid black;
     margin: 1rem;
 }
 .displayInnerBox {
     border: 10px solid black;
 }
-.pokemon h1 {
+.gameboy h1 {
     font-size: 2em;
     margin: 0rem;
 }
-.pokemon h2 {
+.gameboy h2 {
     font-size: 1.3em;
     margin: 0rem;
 }
-.pokemon h3 {
+.gameboy h3 {
     font-size: .8em;
     padding-left: 1.5rem;
+}
+.pokeTypes {
+    color: black;
 }
 html {
     margin: 0;

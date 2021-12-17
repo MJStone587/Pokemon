@@ -10,29 +10,41 @@
 </head>
 
 <div class="header">
+    <h1>Enter a Pokemon...</h1>
     <input id="search" type="text" placeholder="Search...">
     <button id="submit" type="submit">Submit</button>
+    <label><br>or select a Pokemon...</label>
+    <select></select>
 </div>
 
 <body class="pokemonDisplay">
-    <div class="pokemon poke1">
-        <div class="displayBox">
+
+    <div class="gameboy">
+        <!-- to create gameboy appearance-->
+        <div class="gameboyDisplayBox">
+            <!-- to create border for inner display box of gameboy-->
             <div class="displayInnerBox">
+                <!-- creates the gameboys game display box-->
                 <div class="boxHeader">
                     <img id="defaultSprite" src="xern.png" alt="Default Pokemon Picture">
                     <img id="defaultShiny" src="xernshiny.jpg"' alt="Shiny Pokemon Picture">
                     <img id="backDefault" src="xerneas_active.png">
                     <img id="backShiny" src="Xerneas_active_shiny.jpg">
+                </div>
+
             </div>
+
         </div>
-    </div>
+
         <div class="boxBody">
-            <h1 id="name">Xerneas</h1>
-            <h2 id="pokeTypes">Fairy</h2>
+            <h1 class="name">Name</h1>
+            <h2 class="pokeType1"></h2>
+            <h2 class="pokeType2"></h2>
+            <h2 class="pokeType3"></h2>
                     <div class="buttonsTop">
                         <img src="dpad.png" alt="dpad image">
-                        <button id="buttonAB">A</button>
-                        <button id="buttonAB">B</button>
+                        <button id="buttonAB buttonA">A</button>
+                        <button id="buttonAB buttonB">B</button>
                     </div>
                     <div class="buttonsBot">
                         <button id="selectStart">More</button>
@@ -41,6 +53,7 @@
 
                 </div>
             </div>
+        
 </body>
 <script src="script.js"></script>
 
