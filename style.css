@@ -96,17 +96,18 @@
 .buttonsTop {
     display:flex;
     flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-content: flex-start;
     align-items: center;
     width: 100%;
-    padding-top: 1rem;
+    margin-top: 1rem;
 }
-.buttonsTop #buttonAB{
+.buttonsTop button{
     width: 2vw;
     height: 4vh;
     border: 1px solid black;
-    border-radius: 50%;
+    border-radius: 50%; 
+}
+.buttonsTop #buttonA {
+    padding-top: 3rem;
 }
 .buttonsTop img {
     padding-right: 7rem;

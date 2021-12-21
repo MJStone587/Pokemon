@@ -1,55 +1,70 @@
 'use strict';
 
-const pokeBall = document.getElementById('pokeball');
 let type1 = ".pokeType1";
 let type2 = ".pokeType2";
 let type3 = ".pokeType3";
 
 
-/*pokeBall.addEventListener('mouseenter', function () { this.src = "pokeballopen.png" });
-pokeBall.addEventListener('mouseleave', function () { this.src = "pokeballclosed.png" }); */
-
-
 /* function to change text color based on the type of the pokemon and input based on which h2 tag */
 const colorChange = function (type) {
     let pokeType = document.querySelector(type).innerHTML.toLowerCase();
-    if (pokeType === "electric") {
-        document.querySelector(type).style.color = "yellow";
-    } else if (pokeType === "normal") {
-        document.querySelector(type).style.color = "#c8ac8c";
-    } else if (pokeType === "fairy") {
-        document.querySelector(type).style.color = "pink";
-    } else if (pokeType === "water") {
-        document.querySelector(type).style.color = "blue";
-    } else if (pokeType === "fire") {
-        document.querySelector(type).style.color = "orange";
-    } else if (pokeType === "dark") {
-        document.querySelector(type).style.color = "black";
-    } else if (pokeType === "steel") {
-        document.querySelector(type).style.color = "#d8d8d8 ";
-    } else if (pokeType === "ice") {
-        document.querySelector(type).style.color = "lightblue";
-    } else if (pokeType === "fighting") {
-        document.querySelector(type).style.color = "darkred";
-    } else if (pokeType === "psychic") {
-        document.querySelector(type).style.color = "#eb56a7";
-    } else if (pokeType === "grass") {
-        document.querySelector(type).style.color = "#31bb33";
-    } else if (pokeType === "poison") {
-        document.querySelector(type).style.color = "#bb31af";
-    } else if (pokeType === "flying") {
-        document.querySelector(type).style.color = "#b89acb";
-    } else if (pokeType === "bug") {
-        document.querySelector(type).style.color = "#718550";
-    } else if (pokeType === "rock") {
-        document.querySelector(type).style.color = "#718550";
-    } else if (pokeType === "ghost") {
-        document.querySelector(type).style.color = "#716d9d";
-    } else if (pokeType === "ground") {
-        document.querySelector(type).style.color = "#817b46";
+    switch (pokeType) {
+        case "electric":
+            document.querySelector(type).style.color = "yellow";
+            break;
+        case "normal":
+            document.querySelector(type).style.color = "#c8ac8c";
+            break;
+        case "fairy":
+            document.querySelector(type).style.color = "pink";
+            break;
+        case "water":
+            document.querySelector(type).style.color = "blue";
+            break;
+        case "fire":
+            document.querySelector(type).style.color = "orange";
+            break;
+        case "dark":
+            document.querySelector(type).style.color = "black";
+            break;
+        case "steel":
+            document.querySelector(type).style.color = "#d8d8d8 ";
+            break;
+        case "ice":
+            document.querySelector(type).style.color = "lightblue";
+            break;
+        case "fighting":
+            document.querySelector(type).style.color = "darkred";
+            break;
+        case "psychic":
+            document.querySelector(type).style.color = "#eb56a7";
+            break;
+        case "grass":
+            document.querySelector(type).style.color = "#31bb33";
+            break;
+        case "poison":
+            document.querySelector(type).style.color = "#bb31af";
+            break;
+        case "flying":
+            document.querySelector(type).style.color = "#b89acb";
+            break;
+        case "bug":
+            document.querySelector(type).style.color = "#718550";
+            break;
+        case "rock":
+            document.querySelector(type).style.color = "#718550";
+            break;
+        case "ghost":
+            document.querySelector(type).style.color = "#716d9d";
+            break;
+        case "ground":
+            document.querySelector(type).style.color = "#817b46";
+            break;
+        default:
+            document.querySelector(type).style.color = "black";
+            break;
     }
 }
-
 /* on submit button click event*/
 document.getElementById('submit').addEventListener('click', function () {
     /* store the data within the search field and make it all lowercase*/
@@ -92,6 +107,8 @@ document.getElementById('submit').addEventListener('click', function () {
 
         });
 });
+
+
 
 
 
