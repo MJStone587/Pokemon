@@ -1,9 +1,13 @@
 'use strict';
 
-const pokeball = document.getElementById('pokeball');
+const pokeBall = document.getElementById('pokeball');
 let type1 = ".pokeType1";
 let type2 = ".pokeType2";
 let type3 = ".pokeType3";
+
+
+/*pokeBall.addEventListener('mouseenter', function () { this.src = "pokeballopen.png" });
+pokeBall.addEventListener('mouseleave', function () { this.src = "pokeballclosed.png" }); */
 
 
 /* function to change text color based on the type of the pokemon and input based on which h2 tag */
@@ -55,9 +59,9 @@ document.getElementById('submit').addEventListener('click', function () {
         /* response transform to json to read */
         .then(response => response.json())
         .then(data => {
-            /* json data logged to console for referencing TO BE REMOVED LATER WINK WINK*/
+            /* json data logged to console for referencing TO BE REMOVED LATER*/
             console.log(data);
-            /* based on searched pokemon name retrieve sprites and replace current sprites */
+            /* based on searched pokemon name, retrieve sprites and replace current sprites */
             document.getElementById('defaultSprite').src = data.sprites.front_default;
             document.getElementById('defaultShiny').src = data.sprites.front_shiny;
             document.getElementById('backDefault').src = data.sprites.back_default;
