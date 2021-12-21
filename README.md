@@ -1,2 +1,2 @@
 # Pokemon
-Pokemon data in a nice easy to use site. Using ... Javascript API request / html / css.  
+Practice with API. Pokemon data in a nice easy to use site. Using ... Javascript / html / css.  
