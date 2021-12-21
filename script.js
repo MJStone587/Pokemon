@@ -65,6 +65,22 @@ const colorChange = function (type) {
             break;
     }
 }
+
+/* Fetch all pokemon names from api call and populate select options*/
+
+fetch("https://pokeapi.co/api/v2/pokemon/?limit=811/")
+    .then(response => response.json())
+    .then(data => {
+        const selectPoke = document.getElementById('pokeSelect');
+        const option = document.createElement('option');
+        let i = 0;
+        for (i = 0; i < data.results.length; i++) {
+            option.text = data.results[i].name.charAt(0).toUpperCase() + data.results[i].name.slice(1);
+            console.log(data.results[i].name);
+            selectPoke.add(option, pokeSelect[i]);
+        }
+    })
+
 /* on submit button click event*/
 document.getElementById('submit').addEventListener('click', function () {
     /* store the data within the search field and make it all lowercase*/
@@ -107,6 +123,7 @@ document.getElementById('submit').addEventListener('click', function () {
 
         });
 });
+
 
 
 
