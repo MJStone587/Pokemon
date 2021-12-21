@@ -1,22 +1,23 @@
 .logo {
     display:flex;
     flex-flow: column nowrap;
-    justify-content: space-between;
+    justify-content: center; 
     align-items: center;
     background-image: url("bgpoke2.png");
     background-color: #cccc;
     background-size: auto;
     background-repeat: no-repeat;
+    height: 100vh;
 }
 .logo h1 {
-    padding-left: 15rem;
+    padding-left: 5rem;
     color: rgb(51, 51, 185);
     filter: none;
 }
 .logo #pokeball {
     height: 20vh;
     width: 10vw;
-    margin-left: 25rem;
+    margin-left: 5rem;
     margin-top: 3rem;
 }
 .logo #pokeball:hover {
