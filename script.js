@@ -1,5 +1,8 @@
 'use strict';
 
+/* variable assignment */
+const searchSubmit = document.getElementById('submit');
+const selectChoice = document.getElementById('pokeSelect');
 let type1 = ".pokeType1";
 let type2 = ".pokeType2";
 let type3 = ".pokeType3";
@@ -66,32 +69,37 @@ const colorChange = function (type) {
     }
 }
 
-/* Fetch all pokemon names from api call and populate select options*/
+/* Fetch all pokemon types from api call and populate select options*/
+const fillOptions = function () {
+    fetch("https://pokeapi.co/api/v2/type/?limit=18/")
+        .then(response => response.json())
+        .then(data => {
+            for (let i = 0; i < data.results.length; i++) {
+                const selectType = document.getElementById('pokeTypeSelect');
+                const option = document.createElement('option');
+                let capitalize = data.results[i].name.charAt(0).toUpperCase() + data.results[i].name.slice(1);
+                option.value = data.results[i].name;
+                option.innerHTML = capitalize;
+                selectType.add(option, null);
+            }
+        });
+}
+fillOptions();
+/* when a type is chosen from drop down list open new menus for pokemon names of that type */
 
-fetch("https://pokeapi.co/api/v2/pokemon/?limit=811/")
-    .then(response => response.json())
-    .then(data => {
-        const selectPoke = document.getElementById('pokeSelect');
-        const option = document.createElement('option');
-        let i = 0;
-        for (i = 0; i < data.results.length; i++) {
-            option.text = data.results[i].name.charAt(0).toUpperCase() + data.results[i].name.slice(1);
-            console.log(data.results[i].name);
-            selectPoke.add(option, pokeSelect[i]);
-        }
-    })
 
 /* on submit button click event*/
 document.getElementById('submit').addEventListener('click', function () {
     /* store the data within the search field and make it all lowercase*/
     const search = document.getElementById('search').value.toLowerCase();
+    if (search === "" || search === null) {
+        alert('Please enter a pokemon name');
+    }
     /* use data within the search field as paramenters for api call */
     fetch(`https://pokeapi.co/api/v2/pokemon/${search}/`)
         /* response transform to json to read */
         .then(response => response.json())
         .then(data => {
-            /* json data logged to console for referencing TO BE REMOVED LATER*/
-            console.log(data);
             /* based on searched pokemon name, retrieve sprites and replace current sprites */
             document.getElementById('defaultSprite').src = data.sprites.front_default;
             document.getElementById('defaultShiny').src = data.sprites.front_shiny;

@@ -11,12 +11,20 @@
 
 <div class="header">
     <h1>Enter a Pokemon...</h1>
+    <!-- search box to choose pokemon -->
     <input id="search" type="text" placeholder="Search...">
     <button id="submit" type="submit">Submit</button>
-    <label><br>or select a Pokemon...</label>
-    <select name="pokemon" id="pokeSelect">
-        <option value="charizard">Charizard</option>
-    </select>
+    <!-- drop down menu to manually search pokemon by type POPULATED BY JS API CALL-->
+    <form>
+        <label><br>or select a Pokemon by type...WIP<br></label>
+        <select name="pokemonType" id="pokeTypeSelect">
+            <option value=" " selected></option>
+        </select>
+        <br>
+        <select name="pokemon" id="pokemonSelect">
+            <option value="" selected></option>
+        </select>
+    </form>
 </div>
 
 <body class="pokemonDisplay">
@@ -28,6 +36,7 @@
             <div class="displayInnerBox">
                 <!-- creates the gameboys game display box-->
                 <div class="boxHeader">
+                    <!--- sprite images to populate gameboy display -->
                     <img id="defaultSprite" src="xern.png" alt="Default Pokemon Picture">
                     <img id="defaultShiny" src="xernshiny.jpg"' alt="Shiny Pokemon Picture">
                     <img id="backDefault" src="xerneas_active.png" alt="Default Back Picture">
@@ -36,24 +45,29 @@
 
             </div>
 
-        </div>
-
+        </div> 
+        <!-- gameboy body below display-->
         <div class="boxBody">
+            <!-- pokemon name location -->
             <h1 class="name">Name</h1>
+            <!-- pokemon type locations -->
             <h2 class="pokeType1"></h2>
             <h2 class="pokeType2"></h2>
             <h2 class="pokeType3"></h2>
+                    <!-- gameboy dpad and other button locations -->
                     <div class="buttonsTop">
                         <img src="dpad.png" alt="dpad image">
                         <button id="buttonAB buttonA">A</button>
                         <button id="buttonAB buttonB">B</button>
                     </div>
+
                     <div class="buttonsBot">
                         <button id="selectStart">More</button>
                         <button id="selectStart">Add</button>
                     </div>
 
                 </div>
+
             </div>
         
 </body>

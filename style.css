@@ -1,3 +1,8 @@
+html {
+    margin: 0;
+    width: 100%;
+}
+/* below this is index.html styling */
 .logo {
     display:flex;
     flex-flow: column nowrap;
@@ -28,7 +33,7 @@
     height: 40vh;
 }
 
-/* Below pokemon.html files */
+/* Below this is pokemon.html files */
 .header {
     display:flex;
     flex-flow: column nowrap;
@@ -42,7 +47,6 @@
     border-radius: 5px;
 }
 .pokemonDisplay {
-    border: 1px solid black;
     display: flex;
     flex-flow: column wrap;
     justify-content: space-around;
@@ -57,17 +61,17 @@
     background-color: rgb(172, 171, 171);
     margin: 1rem 1rem 1rem 1rem;
     border: 2px solid black;
-    width: 20vw;
+    width: 25vw;
     border-radius: 7px;
 }
 .boxHeader img {
-    height: 7vh;
-    width: 7vw;
+    height: 10vh;
+    width: 10vw;
 }
 .boxHeader {
     background-color: rgb(139, 139, 139);
     display: flex;
-    height: 30vh;
+    height: 33vh;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
@@ -75,15 +79,15 @@
 .boxBody {
     background-color: rgb(172, 171, 171);
     display: flex;
-    height: 30vh;
+    height: 33vh;
     flex-flow: column wrap;
     align-items: center;
 }
 .boxBody img {
     align-self: flex-start;
     padding-left: 2rem;
-    height: 10vh;
-    width: 10vh;
+    height: 11vh;
+    width: 12vh;
 }
 .boxBody button {
     border: 1px solid black;
@@ -139,8 +143,4 @@
 }
 .pokeTypes {
     color: black;
-}
-html {
-    margin: 0;
-    width: 100%;
 }
