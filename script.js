@@ -8,7 +8,7 @@ let type2 = ".pokeType2";
 let type3 = ".pokeType3";
 
 
-/* function to change text color based on the type of the pokemon and input based on which h2 tag */
+/* function to change text color based on the type of the pokemon */
 const colorChange = function (type) {
     let pokeType = document.querySelector(type).innerHTML.toLowerCase();
     switch (pokeType) {
@@ -85,8 +85,6 @@ const fillOptions = function () {
         });
 }
 fillOptions();
-/* when a type is chosen from drop down list open new menus for pokemon names of that type */
-
 
 /* on submit button click event*/
 document.getElementById('submit').addEventListener('click', function () {
@@ -131,7 +129,23 @@ document.getElementById('submit').addEventListener('click', function () {
 
         });
 });
-
+/* when a type is chosen from drop down list open new menus for pokemon names of that type */
+function changeValue() {
+    let typeName = document.getElementById('pokeTypeSelect').value;
+    const select1 = document.getElementById('pokeTypeSelect');
+    const newSelect = document.createElement('select');
+    const newOption = document.createElement('option')
+    fetch(`https://pokeapi.co/api/v2/type/${typeName}`)
+        .then(response => response.json())
+        .then(data => {
+            select1.append(newSelect);
+            newSelect.name = "dropdown2";
+            newSelect.id = "dropdown2";
+            for (let i = 0; i < data.pokemon.length; i++) {
+                console.log(data.pokemon[i].pokemon.name);
+            }
+        })
+}
 
 
 
