@@ -85,64 +85,108 @@ const fillOptions = function () {
         });
 }
 fillOptions();
-
 /* on submit button click event*/
-document.getElementById('submit').addEventListener('click', function () {
-    /* store the data within the search field and make it all lowercase*/
-    const search = document.getElementById('search').value.toLowerCase();
-    if (search === "" || search === null) {
-        alert('Please enter a pokemon name');
-    }
-    /* use data within the search field as paramenters for api call */
-    fetch(`https://pokeapi.co/api/v2/pokemon/${search}/`)
-        /* response transform to json to read */
-        .then(response => response.json())
-        .then(data => {
-            /* based on searched pokemon name, retrieve sprites and replace current sprites */
-            document.getElementById('defaultSprite').src = data.sprites.front_default;
-            document.getElementById('defaultShiny').src = data.sprites.front_shiny;
-            document.getElementById('backDefault').src = data.sprites.back_default;
-            document.getElementById('backShiny').src = data.sprites.back_shiny;
-            /* change name of pokemon displayed to name of pokemon in api call and capitalize first letter*/
-            document.querySelector('.name').innerHTML = data.name.charAt(0).toUpperCase() + data.name.slice(1);
-            /* change pokemon types displayed and if there is more than one pokemon type change subsequent fields */
-            if (data.types.length === 2) {
-                document.querySelector('.pokeType1').innerHTML = data.types[0].type.name.charAt(0).toUpperCase() + data.types[0].type.name.slice(1);
-                document.querySelector('.pokeType2').innerHTML = data.types[1].type.name.charAt(0).toUpperCase() + data.types[1].type.name.slice(1);
-                document.querySelector('.pokeType3').innerHTML = " ";
-                /* call function to change color of pokemon types */
-                colorChange(type1);
-                colorChange(type2);
-            } else if (data.types.length === 3) {
-                document.querySelector('.pokeType1').innerHTML = data.types[0].type.name.charAt(0).toUpperCase() + data.types[0].type.name.slice(1);
-                document.querySelector('.pokeType2').innerHTML = data.types[1].type.name.charAt(0).toUpperCase() + data.types[1].type.name.slice(1);
-                document.querySelector('.pokeType3').innerHTML = data.types[2].type.name.charAt(0).toUpperCase() + data.types[2].type.name.slice(1);
-                colorChange(type1);
-                colorChange(type2);
-                colorChange(type3);
-            } else {
-                document.querySelector('.pokeType1').innerHTML = data.types[0].type.name.charAt(0).toUpperCase() + data.types[0].type.name.slice(1);
-                document.querySelector('.pokeType2').innerHTML = " ";
-                document.querySelector('.pokeType3').innerHTML = " ";
-                colorChange(type1);
-            }
-
-        });
-});
+const pokeCall = function () {
+    document.querySelector('.header').addEventListener('click', function (event) {
+        /* store the data within the search field and make it all lowercase*/
+        if (event.target.classList.contains('searchSubmit')) {
+            const search = document.getElementById('search').value.toLowerCase();
+            /* use data within the search field as paramenters for api call */
+            fetch(`https://pokeapi.co/api/v2/pokemon/${search}/`)
+                /* response transform to json to read */
+                .then(response => response.json())
+                .then(data => {
+                    /* based on searched pokemon name, retrieve sprites and replace current sprites */
+                    document.getElementById('defaultSprite').src = data.sprites.front_default;
+                    document.getElementById('defaultShiny').src = data.sprites.front_shiny;
+                    document.getElementById('backDefault').src = data.sprites.back_default;
+                    document.getElementById('backShiny').src = data.sprites.back_shiny;
+                    /* change name of pokemon displayed to name of pokemon in api call and capitalize first letter*/
+                    document.querySelector('.name').innerHTML = data.name.charAt(0).toUpperCase() + data.name.slice(1);
+                    /* change pokemon types displayed and if there is more than one pokemon type change subsequent fields */
+                    if (data.types.length === 2) {
+                        document.querySelector('.pokeType1').innerHTML = data.types[0].type.name.charAt(0).toUpperCase() + data.types[0].type.name.slice(1);
+                        document.querySelector('.pokeType2').innerHTML = data.types[1].type.name.charAt(0).toUpperCase() + data.types[1].type.name.slice(1);
+                        document.querySelector('.pokeType3').innerHTML = " ";
+                        /* call function to change color of pokemon types */
+                        colorChange(type1);
+                        colorChange(type2);
+                    } else if (data.types.length === 3) {
+                        document.querySelector('.pokeType1').innerHTML = data.types[0].type.name.charAt(0).toUpperCase() + data.types[0].type.name.slice(1);
+                        document.querySelector('.pokeType2').innerHTML = data.types[1].type.name.charAt(0).toUpperCase() + data.types[1].type.name.slice(1);
+                        document.querySelector('.pokeType3').innerHTML = data.types[2].type.name.charAt(0).toUpperCase() + data.types[2].type.name.slice(1);
+                        colorChange(type1);
+                        colorChange(type2);
+                        colorChange(type3);
+                    } else {
+                        document.querySelector('.pokeType1').innerHTML = data.types[0].type.name.charAt(0).toUpperCase() + data.types[0].type.name.slice(1);
+                        document.querySelector('.pokeType2').innerHTML = " ";
+                        document.querySelector('.pokeType3').innerHTML = " ";
+                        colorChange(type1);
+                    }
+                });
+        } else if (event.target.classList.contains('dropdownSubmit')) {
+            const search = document.querySelector('.dropdown2').value.toLowerCase();
+            /* use data within the search field as paramenters for api call */
+            fetch(`https://pokeapi.co/api/v2/pokemon/${search}/`)
+                /* response transform to json to read */
+                .then(response => response.json())
+                .then(data => {
+                    /* based on searched pokemon name, retrieve sprites and replace current sprites */
+                    document.getElementById('defaultSprite').src = data.sprites.front_default;
+                    document.getElementById('defaultShiny').src = data.sprites.front_shiny;
+                    document.getElementById('backDefault').src = data.sprites.back_default;
+                    document.getElementById('backShiny').src = data.sprites.back_shiny;
+                    /* change name of pokemon displayed to name of pokemon in api call and capitalize first letter*/
+                    document.querySelector('.name').innerHTML = data.name.charAt(0).toUpperCase() + data.name.slice(1);
+                    /* change pokemon types displayed and if there is more than one pokemon type change subsequent fields */
+                    if (data.types.length === 2) {
+                        document.querySelector('.pokeType1').innerHTML = data.types[0].type.name.charAt(0).toUpperCase() + data.types[0].type.name.slice(1);
+                        document.querySelector('.pokeType2').innerHTML = data.types[1].type.name.charAt(0).toUpperCase() + data.types[1].type.name.slice(1);
+                        document.querySelector('.pokeType3').innerHTML = " ";
+                        /* call function to change color of pokemon types */
+                        colorChange(type1);
+                        colorChange(type2);
+                    } else if (data.types.length === 3) {
+                        document.querySelector('.pokeType1').innerHTML = data.types[0].type.name.charAt(0).toUpperCase() + data.types[0].type.name.slice(1);
+                        document.querySelector('.pokeType2').innerHTML = data.types[1].type.name.charAt(0).toUpperCase() + data.types[1].type.name.slice(1);
+                        document.querySelector('.pokeType3').innerHTML = data.types[2].type.name.charAt(0).toUpperCase() + data.types[2].type.name.slice(1);
+                        colorChange(type1);
+                        colorChange(type2);
+                        colorChange(type3);
+                    } else {
+                        document.querySelector('.pokeType1').innerHTML = data.types[0].type.name.charAt(0).toUpperCase() + data.types[0].type.name.slice(1);
+                        document.querySelector('.pokeType2').innerHTML = " ";
+                        document.querySelector('.pokeType3').innerHTML = " ";
+                        colorChange(type1);
+                    }
+                });
+        }
+    });
+}
+pokeCall();
 /* when a type is chosen from drop down list open new menus for pokemon names of that type */
 function changeValue() {
     let typeName = document.getElementById('pokeTypeSelect').value;
-    const select1 = document.getElementById('pokeTypeSelect');
     const newSelect = document.createElement('select');
-    const newOption = document.createElement('option')
+    const header = document.querySelector('.header');
+    const newButton = document.createElement('button');
     fetch(`https://pokeapi.co/api/v2/type/${typeName}`)
         .then(response => response.json())
         .then(data => {
-            select1.append(newSelect);
-            newSelect.name = "dropdown2";
-            newSelect.id = "dropdown2";
+            header.append(newSelect);
+            header.append(newButton);
+            newSelect.classList.add("dropdown2");
+            newSelect.style.display = "flex";
+            newSelect.style.alignItems = "center";
+            newButton.style.display = "flex";
+            newButton.innerHTML = "Submit";
+            newButton.classList.add("dropdownSubmit");
             for (let i = 0; i < data.pokemon.length; i++) {
-                console.log(data.pokemon[i].pokemon.name);
+                const newOption = document.createElement('option');
+                newOption.value = data.pokemon[i].pokemon.name;
+                newOption.innerHTML = data.pokemon[i].pokemon.name.charAt(0).toUpperCase() + data.pokemon[i].pokemon.name.slice(1);
+                newSelect.add(newOption, null);
             }
         })
 }

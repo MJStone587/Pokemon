@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 html {
     margin: 0;
     width: 100%;
@@ -15,15 +17,18 @@ html {
     height: 100vh;
 }
 .logo h1 {
-    padding-left: 5rem;
+    padding-left: 20px;
     color: rgb(51, 51, 185);
     filter: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 25px;
+    padding-left: 60px;
 }
 .logo #pokeball {
     height: 20vh;
     width: 10vw;
-    margin-left: 5rem;
-    margin-top: 3rem;
+    margin-left: 20px;
+    margin-top: 18px;
 }
 .logo #pokeball:hover {
     cursor: pointer;
@@ -38,13 +43,27 @@ html {
     display:flex;
     flex-flow: column nowrap;
 }
-.header #submit {
+.header h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 15px;
+}
+.searchSubmit, .dropdownSubmit {
     border: 2px solid black;
-    background-color: gray;
+    background-color: rgb(117, 126, 207);
     color: black;
     font-weight: bold;
-    font-size: 1em;
-    border-radius: 5px;
+    font-size: 15px;
+    border-radius: 2px;
+}
+.searchSubmit:hover, .dropdownSubmit:hover {
+    cursor:pointer;
+    color: white;   
+    border: 2px dotted black;
+}
+.header #search {
+    border: 1px solid black;
+    padding: 5px;
+    margin-bottom: 2px;
 }
 .pokemonDisplay {
     display: flex;
@@ -59,7 +78,7 @@ html {
 }
 .gameboy {
     background-color: rgb(172, 171, 171);
-    margin: 1rem 1rem 1rem 1rem;
+    margin: 5px 5px 5px 5px;
     border: 2px solid black;
     width: 25vw;
     border-radius: 7px;
@@ -85,7 +104,7 @@ html {
 }
 .boxBody img {
     align-self: flex-start;
-    padding-left: 2rem;
+    padding-left: 30px;
     height: 11vh;
     width: 12vh;
 }
@@ -102,7 +121,7 @@ html {
     flex-flow: row nowrap;
     align-items: center;
     width: 100%;
-    margin-top: 1rem;
+    margin-top:10px;
 }
 .buttonsTop button{
     width: 2vw;
@@ -111,35 +130,35 @@ html {
     border-radius: 50%; 
 }
 .buttonsTop #buttonA {
-    padding-top: 3rem;
+    padding-top: 15px;
 }
 .buttonsTop img {
-    padding-right: 7rem;
+    padding-right: 150px;
 }
 .buttonsBot {
-    padding: 3rem 0rem 0rem 0rem;
+    padding: 10px 0px 0px 0px;
 }
 .buttonsBot button:hover {
     cursor:pointer;
 }
 .gameboyDisplayBox {
     border: 1px solid black;
-    margin: 1rem;
+    margin: 8px;
 }
 .displayInnerBox {
     border: 10px solid black;
 }
 .gameboy h1 {
-    font-size: 2em;
+    font-size: 28px;
     margin: 0rem;
 }
 .gameboy h2 {
-    font-size: 1.3em;
-    margin: 0rem;
+    font-size: 18px;
+    margin: 0px;
 }
 .gameboy h3 {
-    font-size: .8em;
-    padding-left: 1.5rem;
+    font-size: 8px;
+    padding-left: 10px;
 }
 .pokeTypes {
     color: black;
