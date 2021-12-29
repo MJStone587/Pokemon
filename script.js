@@ -88,7 +88,7 @@ const colorChange = function (type) {
             document.querySelector(type).style.color = "#bb31af";
             break;
         case "flying":
-            document.querySelector(type).style.color = "#b89acb";
+            document.querySelector(type).style.color = "#7d69a4";
             break;
         case "bug":
             document.querySelector(type).style.color = "#718550";
