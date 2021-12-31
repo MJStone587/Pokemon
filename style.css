@@ -87,6 +87,11 @@ form label {
     height: 10vh;
     width: 10vw;
 }
+#pokeTypeSelect {
+    margin-bottom: 5px;
+    border: 1px solid black;
+    border-radius: 3px;
+}
 .boxHeader {
     background-color: rgb(139, 139, 139);
     display: flex;
@@ -95,20 +100,20 @@ form label {
     justify-content: center;
     align-items: center;
 }
-.boxBody {
+.gameboyBody {
     background-color: rgb(172, 171, 171);
     display: flex;
     height: 33vh;
     flex-flow: column wrap;
     align-items: center;
 }
-.boxBody img {
+.gameboyBody img {
     align-self: flex-start;
     padding-left: 30px;
     height: 11vh;
     width: 12vh;
 }
-.boxBody button {
+.gameboyBody button {
     border: 1px solid black;
     border-radius: 25px;
     background-color: black;
@@ -130,13 +135,18 @@ form label {
     border-radius: 50%; 
 }
 .buttonsTop #buttonA {
-    padding-top: 15px;
+    margin-top: 50px;
+    margin-left: 30px;
+}
+.buttonsTop #buttonB {
+    margin-left: 10px;
 }
 .buttonsTop img {
     padding-right: 150px;
+    margin-left: 20px;
 }
 .buttonsBot {
-    padding: 10px 0px 0px 0px;
+    margin: 60px 0px 0px 0px;
 }
 .buttonsBot button:hover {
     cursor:pointer;
@@ -166,12 +176,26 @@ form label {
 }
 /* Ipad sized styling */
 @media only screen and (max-width: 810px){
+    /* index page */
+    .logo #pokemonlogo {
+        width: 65vw;
+        height: 30vh;
+    }
+    .logo #pokeball {
+        height: 15vh;
+        width: 20vw;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    /*pokemon page */
     .gameboy {
         background-color: rgb(172, 171, 171);
         margin: 2em;
         border: 2px solid black;
         width: 45vw;
         border-radius: 5px;
+        align-self:
     }
     .pokemonDisplay {
         display: flex;
@@ -181,28 +205,20 @@ form label {
         height: 100vh;
         width: 100vw;
     }
-    .boxBody {
+    .gameboyBody {
         background-color: rgb(172, 171, 171);
         display: flex;
         height: 30vh;
         flex-flow: column wrap;
         align-items: center;
     }
-    .boxBody img {
+    .gameboyBody img {
         align-self: flex-start;
-        padding-left: 2em;
-        height: 10vh;
-        width: 11vh;
+        padding-left: 1em;
+        height: 12vh;
+        width: 15vh;
     }
-    .boxBody button {
-        border: 1px solid black;
-        border-radius: 25px;
-        background-color: black;
-        color: white;
-        width: 7vw;
-        height: 1.75vh;
-        margin-top: 45px;
-    }
+   
     .boxHeader {
         background-color: rgb(139, 139, 139);
         display: flex;
@@ -216,19 +232,45 @@ form label {
         width: 12vw;
     }
     .buttonsTop button{
-        width: 4vw;
+        width: 4.2vw;
         height: 3vh;
         border: 1px solid black;
         border-radius: 50%; 
         margin-top: 50px;
     }
     .buttonsTop img {
-        padding-right: 100px;
+        height: 10vh;
+        width: 13vw;
+        padding-right: 80px;
         padding-top: 20px;
+    }
+    .buttonsTop #buttonB {
+        margin-top: 20px;
     }
 }
 /* Iphone sized styling */
 @media only screen and (max-width: 414px){
+    /* index.html*/
+    .logo #pokemonlogo {
+        width: 60vw;
+        height: 20vh;
+    }
+    .logo h1 {
+        padding-left: 20px;
+        color: rgb(51, 51, 185);
+        filter: none;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 13px;
+        padding-left: 60px;
+    }
+    .logo #pokeball {
+        height: 15vh;
+        width: 25vw;
+        margin-left: 20px;
+        margin-top: 18px;
+    }
+
+    /* pokemon.html */
     .gameboy {
         background-color: rgb(172, 171, 171);
         margin: 2em;
@@ -244,27 +286,28 @@ form label {
         height: 100vh;
         width: 100vw;
     }
-    .boxBody {
+    .gameboyBody {
         background-color: rgb(172, 171, 171);
         display: flex;
         height: 30vh;
         flex-flow: column wrap;
         align-items: center;
     }
-    .boxBody img {
+    .gameboyBody img {
         align-self: flex-start;
         padding-left: 2em;
         height: 10vh;
         width: 11vh;
     }
-    .boxBody button {
+    .gameboyBody button {
         border: 1px solid black;
         border-radius: 25px;
         background-color: black;
         color: white;
-        width: 7vw;
-        height: 1.75vh;
-        margin-top: 45px;
+        width: 12vw;
+        height: 2.5vh;
+        margin-top: 20px;
+        font-size: 12px;
     }
     .boxHeader {
         background-color: rgb(139, 139, 139);
@@ -276,17 +319,33 @@ form label {
     }
     .boxHeader img {
         height: 12vh;
-        width: 12vw;
+        width: 14vw;
     }
     .buttonsTop button{
-        width: 4vw;
-        height: 3vh;
+        width: 8vw;
+        height: 4vh;
         border: 1px solid black;
         border-radius: 50%; 
-        margin-top: 50px;
+        margin-top: 5px;
     }
     .buttonsTop img {
-        padding-right: 100px;
-        padding-top: 20px;
+        padding-right: 5px;
+        padding-top: 10px;
+    }
+    .gameboy h1 {
+        font-size: 1.4em;
+        text-decoration: underline;
+        margin: 0em;
+    }
+    .gameboy h2 {
+        font-size: 1em;
+        margin: 0em;
+    }
+    .gameboy h3 {
+        font-size: .75em;
+        padding-left: 3em;
+    }
+    .buttonsBot {
+        margin: 12px 0px 0px 0px;
     }
 }

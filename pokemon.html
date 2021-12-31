@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="./images/favicon_io/favicon-32x32.png">
     <title>Pokemon Index</title>
 </head>
 
@@ -43,7 +44,7 @@
 
         </div> 
         <!-- gameboy body below display-->
-        <div class="boxBody">
+        <div class="gameboyBody">
             <!-- pokemon name location -->
             <h1 class="name">Name</h1>
             <!-- pokemon type locations -->
@@ -53,19 +54,23 @@
                     <!-- gameboy dpad and other button locations -->
                     <div class="buttonsTop">
                         <img src="dpad.png" alt="dpad image">
-                        <button id="buttonAB buttonA">A</button>
-                        <button id="buttonAB buttonB">B</button>
+                        <button id="buttonA">A</button>
+                        <button id="buttonB">B</button>
                     </div>
 
                     <div class="buttonsBot">
-                        <button id="selectStart">More</button>
-                        <button id="selectStart">Add</button>
+                        <button id="selectMore">More</button>
+                        <button id="selectAdd">Add</button>
                     </div>
 
                 </div>
 
             </div>
-        
+            <div class="modalBG">
+        <div class="modal hidden">
+
+        </div>
+    </div>
 </body>
 <script src="script.js"></script>
 

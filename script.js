@@ -9,7 +9,6 @@ let type2 = ".pokeType2";
 let type3 = ".pokeType3";
 let changeCounter = 0;
 
-
 /* creating api call in separate function to clean up code */
 const apiSearch = function (search) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${search}/`)
@@ -91,7 +90,7 @@ const colorChange = function (type) {
             document.querySelector(type).style.color = "#7d69a4";
             break;
         case "bug":
-            document.querySelector(type).style.color = "#718550";
+            document.querySelector(type).style.color = "#5f9d37";
             break;
         case "rock":
             document.querySelector(type).style.color = "#718550";
@@ -127,7 +126,8 @@ const fillOptions = function () {
         });
 }
 fillOptions();
-/* on submit button click event*/
+
+/* submit button click event*/
 const pokeCall = function () {
     document.querySelector('.header').addEventListener('click', function (event) {
         /* grab data from correct element depending on which submit button is selected */
@@ -145,6 +145,7 @@ const pokeCall = function () {
 pokeCall();
 /* when a type is chosen from drop down list open new menus for pokemon names of that type */
 function changeValue() {
+    const arr = [];
     changeCounter++;
     if (changeCounter <= 1) {
         /* get the poke type from the poketypeselect and store it in a variable */
@@ -164,9 +165,16 @@ function changeValue() {
             .then(data => {
                 /* populate dropdwon list options with pokemon names from api */
                 for (let i = 0; i < data.pokemon.length; i++) {
+                    arr.push(data.pokemon[i].pokemon.name.charAt(0).toUpperCase() + data.pokemon[i].pokemon.name.slice(1));
+                }
+                arr.sort();
+            })
+            .then(() => {
+                /* populate dropdwon list options with pokemon names from api */
+                for (let i = 0; i < arr.length; i++) {
                     const newOption = document.createElement('option');
-                    newOption.value = data.pokemon[i].pokemon.name;
-                    newOption.innerHTML = data.pokemon[i].pokemon.name.charAt(0).toUpperCase() + data.pokemon[i].pokemon.name.slice(1);
+                    newOption.value = arr[i];
+                    newOption.innerHTML = arr[i];
                     newSelect.add(newOption, null);
                 }
             })
@@ -182,13 +190,18 @@ function changeValue() {
             .then(data => {
                 /* populate dropdwon list options with pokemon names from api */
                 for (let i = 0; i < data.pokemon.length; i++) {
+                    arr.push(data.pokemon[i].pokemon.name.charAt(0).toUpperCase() + data.pokemon[i].pokemon.name.slice(1));
+                }
+                arr.sort();
+            })
+            .then(() => {
+                /* populate dropdwon list options with pokemon names from api */
+                for (let i = 0; i < arr.length; i++) {
                     const newOption = document.createElement('option');
-                    newOption.value = data.pokemon[i].pokemon.name;
-                    newOption.innerHTML = data.pokemon[i].pokemon.name.charAt(0).toUpperCase() + data.pokemon[i].pokemon.name.slice(1);
+                    newOption.value = arr[i];
+                    newOption.innerHTML = arr[i];
                     selectEl.add(newOption, null);
                 }
             });
     }
 }
-
-/* creating sort function for list options next step */
