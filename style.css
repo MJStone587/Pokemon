@@ -195,7 +195,6 @@ form label {
         border: 2px solid black;
         width: 45vw;
         border-radius: 5px;
-        align-self:
     }
     .pokemonDisplay {
         display: flex;
@@ -211,6 +210,16 @@ form label {
         height: 30vh;
         flex-flow: column wrap;
         align-items: center;
+    }
+    .gameboyBody button {
+        border: 1px solid black;
+        border-radius: 25px;
+        background-color: black;
+        color: white;
+        width: 8vw;
+        height: 1.75vh;
+        margin-top: 5px;
+        font-size: 11px;
     }
     .gameboyBody img {
         align-self: flex-start;
