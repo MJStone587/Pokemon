@@ -87,7 +87,7 @@ const evolveInto = species => {
         .then(data => {
             if (!data.chain.evolves_to[0]) {
                 modalTo.innerHTML = "Evolves Into: N/A";
-            } else if (data.chain.evolves_to[0].species.name === modalName || data.chain.evolves_to[0].species.name === name) {
+            } else if (data.chain.evolves_to[0].species.name === name) {
                 modalTo.innerHTML = "Evolves Into: N/A";
             } else {
                 let evolveName = data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() + data.chain.evolves_to[0].species.name.slice(1);
