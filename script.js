@@ -8,15 +8,17 @@ const select = document.getElementById('selectMore');
 const close = document.querySelector('.close');
 const modal = document.querySelector('.modal');
 const content = document.querySelector('.modalContent');
-const evolveFrom = document.querySelector('.modalFrom');
-const eggGroup = document.querySelector('.modalEgg');
-const evolveInto = document.querySelector('.modalTo');
-const isLeg = document.querySelector('.modalIsLeg');
-const isMyth = document.querySelector('.modalIsMyth');
+const modalFrom = document.querySelector('.modalFrom');
+const modalEgg = document.querySelector('.modalEgg');
+const modalTo = document.querySelector('.modalTo');
+const modalGen = document.querySelector('.modalGen')
+const modalName = document.querySelector('.name').innerHTML;
+const modalStats = document.querySelector('.modalStats');
 
 const type1 = ".pokeType1";
 const type2 = ".pokeType2";
 const type3 = ".pokeType3";
+
 let changeCounter = 0;
 
 /* function to change pokeomon types */
@@ -43,21 +45,73 @@ const typeDisplay = function (data) {
         colorChange(type1);
     }
 };
-/* function to change inner html of evolved from with correct information from api call */
+
+
+/* function to change modal evolved from  data with correct information from api call */
 const evolvedFrom = species => {
     if (species.evolves_from_species == null || species.evolves_from_species == "is undefined") {
-        evolveFrom.innerHTML = "Evolved From: Nothing";
+        modalFrom.innerHTML = "Evolved From: N/A";
     } else {
         let name = species.evolves_from_species.name;
         fetch(`https://pokeapi.co/api/v2/pokemon/${name}/`)
             .then(response => response.json())
             .then(url => {
                 let newImg = url.sprites.front_default;
-                evolveFrom.innerHTML = "Evolved From: " + species.evolves_from_species.name.charAt(0).toUpperCase() + species.evolves_from_species.name.slice(1) + `<img src=${newImg} width="50px" height="50px" margin="0";> `;
+                modalFrom.innerHTML = "Evolved From: " + species.evolves_from_species.name.charAt(0).toUpperCase() + species.evolves_from_species.name.slice(1);/* + `<img src=${newImg} width="100px" height="100px" margin="0";> `; */
             })
     }
 }
-/* api call based on pokemon selected in dropdown or in search field */
+
+/* get base stats from API and add to modal */
+const baseStats = data => {
+    modalStats.innerHTML = "Base Stats: "
+    var arr = [];
+    for (let i = 0; i < data.stats.length; i++) {
+        arr.push(data.stats[i].stat.name + ":" + " " + data.stats[i].base_stat + " " + "|");
+        modalStats.append(arr[i] + " ");
+    }
+    console.log(arr);
+}
+
+/* function to change "evolve into" data on modal from api call takes input from apiSearch fetch data */
+const evolveInto = species => {
+    let evolveUrl = species.evolution_chain.url;
+    if (species.evolves_from_species === null) {
+        var name = "nothing";
+    } else {
+        var name = species.evolves_from_species.name;
+    }
+    modalTo.innerHTML = "Evolves Into:";
+    fetch(evolveUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (!data.chain.evolves_to[0]) {
+                modalTo.innerHTML = "Evolves Into: N/A";
+            } else if (data.chain.evolves_to[0].species.name === modalName || data.chain.evolves_to[0].species.name === name) {
+                modalTo.innerHTML = "Evolves Into: N/A";
+            } else {
+                let evolveName = data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() + data.chain.evolves_to[0].species.name.slice(1);
+                modalTo.innerHTML = "Evolves Into: " + evolveName;
+            }
+        });
+}
+
+/* function to change Egg Groups modal information with selected pokemon data */
+const eggGroup = species => {
+    modalEgg.innerHTML = "Egg Groups:"
+    var arr = [];
+    for (let i = 0; i < species.egg_groups.length; i++) {
+        arr.push(species.egg_groups[i].name.charAt(0).toUpperCase() + species.egg_groups[i].name.slice(1));
+        if (species.egg_groups.length > 1) {
+            modalEgg.append(" " + arr[i] + " |");
+        } else {
+            modalEgg.append(" " + arr[i]);
+        }
+    }
+}
+
+
+/* api call based on pokemon selected in dropdown list or in search field */
 const apiSearch = function (search) {
     fetch(`https://pokeapi.co/api/v2/pokemon/${search}/`)
         /* response transform to json to read */
@@ -67,8 +121,12 @@ const apiSearch = function (search) {
             fetch(species)
                 .then(newResponse => newResponse.json())
                 .then(species => {
+                    /* call functions to fill modal */
                     evolvedFrom(species);
+                    evolveInto(species);
+                    eggGroup(species);
                 });
+            baseStats(data);
             console.log(data);
             /* based on searched pokemon name, retrieve sprites and replace current sprites */
             document.getElementById('defaultSprite').src = data.sprites.front_default;
@@ -80,12 +138,12 @@ const apiSearch = function (search) {
             /* change name of pokemon displayed in modalto name of pokemon in api call and capitalize first letter*/
             document.querySelector('.modalName').innerHTML = data.name.charAt(0).toUpperCase() + data.name.slice(1);
             document.querySelector('.modalName').style.textDecoration = "underline";
-            /* refer to typeDisplay Function */
+            /* typeDisplay function changes color of pokemon types and fills elements necessary*/
             typeDisplay(data);
         });
 }
 
-/* function to change text color based on the type of the pokemon */
+/* function with switch statement to change text color based on the type of the pokemon */
 const colorChange = function (type) {
     let pokeType = document.querySelector(type).innerHTML.toLowerCase();
     switch (pokeType) {
@@ -93,7 +151,7 @@ const colorChange = function (type) {
             document.querySelector(type).style.color = "yellow";
             break;
         case "normal":
-            document.querySelector(type).style.color = "#c8ac8c";
+            document.querySelector(type).style.color = "#837573";
             break;
         case "fairy":
             document.querySelector(type).style.color = "pink";
@@ -182,14 +240,16 @@ const pokeCall = function () {
     });
 }
 pokeCall();
-/* when a type is chosen from drop down list open new menus for pokemon names of that type */
+
+
+/* when a type is chosen from drop down list create new drop down list populated with pokemon of said type */
 function changeValue() {
     const arr = [];
     changeCounter++;
     if (changeCounter <= 1) {
         /* get the poke type from the poketypeselect and store it in a variable */
         let typeName = document.getElementById('pokeTypeSelect').value;
-        /* store data to create new select element under header with options*/
+        /* store data to create new select element under header */
         const newSelect = document.createElement('select');
         const header = document.querySelector('.header');
         const newButton = document.createElement('button');
@@ -244,6 +304,9 @@ function changeValue() {
             });
     }
 }
+
+
+
 /* More button fuction to open modal */
 select.onclick = function () {
     modal.style.display = "block";

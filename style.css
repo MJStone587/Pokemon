@@ -18,7 +18,7 @@ html {
 }
 .logo h1 {
     padding-left: 20px;
-    color: rgb(51, 51, 185);
+    color: black;
     filter: none;
     font-family: 'Press Start 2P', cursive;
     font-size: 25px;
@@ -188,6 +188,8 @@ form label {
     position: fixed;
 }
 .modalContent {
+    display: flex;
+    flex-flow: column wrap;
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
@@ -203,6 +205,11 @@ form label {
     color: rgb(71, 71, 71);
     font-style: italic;
 }
+.modalRow2 {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+}
 .legCheck, .mythCheck {
     color: green;
 }
@@ -213,8 +220,8 @@ form label {
     display: none;
 }
 .close {
+    align-self: flex-end;
     color: #aaaaaa;
-    float: right;
     font-size: 40px;
     font-weight: bold;
   }
