@@ -189,10 +189,11 @@ form label {
 }
 .modalContent {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
+    align-items: center;
     background-color: #fefefe;
     margin: auto;
-    padding: 20px;
+    padding-left: 20px;
     border: 1px solid #888;
     width: 80%;
   }
@@ -205,10 +206,15 @@ form label {
     color: rgb(71, 71, 71);
     font-style: italic;
 }
+.modalRow1 {
+    margin:0;
+    padding: 0;
+}
 .modalRow2 {
     display: flex;
     flex-flow: column wrap;
-    justify-content: center;
+    margin: 0;
+    padding: 20px 0px 20px 0px;
 }
 .legCheck, .mythCheck {
     color: green;
@@ -221,6 +227,8 @@ form label {
 }
 .close {
     align-self: flex-end;
+    margin:0;
+    padding-right: 20px;
     color: #aaaaaa;
     font-size: 40px;
     font-weight: bold;
