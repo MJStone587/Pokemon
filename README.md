@@ -1,6 +1,6 @@
 # Pokemon
 Why? : 
-  I built this small program to practice working with API and as a fan of Pokemon I was always frustrated using the Serebii site. I wanted a smaller more concise pokemon site that gave me the information I wanted withought having to slog may way through serebii. 
+  I built this small program to practice working with API and as a fan of Pokemon I was always frustrated using the Serebii site. I wanted a smaller more concise pokemon site that gave me the information I wanted without having to slog may way through serebii. 
 
 What did I use? : 
   I used a lot of JavaScript, CSS, and some HTML.
