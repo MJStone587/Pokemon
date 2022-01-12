@@ -62,32 +62,24 @@ const evolvedFrom = species => {
     }
 }
 
-/* get base stats from API and add to modal */
+/* get base stats from API and add to modal gets input from apiSearch() */
 const baseStats = data => {
     modalStats.innerHTML = "Base Stats: "
     var arr = [];
     for (let i = 0; i < data.stats.length; i++) {
-        arr.push(data.stats[i].stat.name + ":" + " " + data.stats[i].base_stat + " " + "|");
+        arr.push(data.stats[i].stat.name.charAt(0).toUpperCase() + data.stats[i].stat.name.slice(1) + ":" + " " + data.stats[i].base_stat + " " + "|");
         modalStats.append(arr[i] + " ");
     }
-    console.log(arr);
 }
 
-/* function to change "evolve into" data on modal from api call takes input from apiSearch fetch data */
+/* function to change "evolve into" data on modal from api call. Takes input from apiSearch()  */
 const evolveInto = species => {
     let evolveUrl = species.evolution_chain.url;
-    if (species.evolves_from_species === null) {
-        var name = "nothing";
-    } else {
-        var name = species.evolves_from_species.name;
-    }
     modalTo.innerHTML = "Evolves Into:";
     fetch(evolveUrl)
         .then(response => response.json())
         .then(data => {
-            if (!data.chain.evolves_to[0]) {
-                modalTo.innerHTML = "Evolves Into: N/A";
-            } else if (data.chain.evolves_to[0].species.name === name) {
+            if (!data.chain.evolves_to[0] || data.chain.evolves_to[0].species.name.toLowerCase(0) === document.querySelector('.name').innerHTML.toLowerCase()) {
                 modalTo.innerHTML = "Evolves Into: N/A";
             } else {
                 let evolveName = data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() + data.chain.evolves_to[0].species.name.slice(1);
@@ -96,7 +88,7 @@ const evolveInto = species => {
         });
 }
 
-/* function to change Egg Groups modal information with selected pokemon data */
+/* function to change Egg Groups modal information with selected pokemon data gets species from apiSearch() */
 const eggGroup = species => {
     modalEgg.innerHTML = "Egg Groups:"
     var arr = [];
@@ -117,8 +109,8 @@ const apiSearch = function (search) {
         /* response transform to json to read */
         .then(response => response.json())
         .then(data => {
-            var species = data.species.url;
-            fetch(species)
+            let speciesFetch = data.species.url;
+            fetch(speciesFetch)
                 .then(newResponse => newResponse.json())
                 .then(species => {
                     /* call functions to fill modal */
