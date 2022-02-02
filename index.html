@@ -41,19 +41,19 @@
             <!--- sprite images to populate gameboy display -->
             <img
               id="defaultSprite"
-              src="xern.png"
+              src="./images/xern.png"
               alt="Default Pokemon Picture"
             />
-            <img id="defaultShiny" src="xernshiny.jpg"' alt="Shiny Pokemon
-            Picture">
+            <img id="defaultShiny" src="./images/xernshiny.jpg"' alt="Shiny
+            Pokemon Picture">
             <img
               id="backDefault"
-              src="xerneas_active.png"
+              src="./images/xerneas_active.png"
               alt="Default Back Picture"
             />
             <img
               id="backShiny"
-              src="Xerneas_active_shiny.jpg"
+              src="./images/Xerneas_active_shiny.jpg"
               alt="Shiny Back Picture"
             />
           </div>
@@ -69,14 +69,27 @@
         <h2 class="pokeType3"></h2>
         <!-- gameboy dpad and other button locations -->
         <div class="buttonsTop">
-          <img src="dpad.png" alt="dpad image" />
-          <button id="buttonA">A</button>
-          <button id="buttonB">B</button>
+          <!--<img src="./images/dpad.png" alt="dpad image" />-->
+          <div class="d-pad">
+            <a href="#" class="up">&#9650;</a>
+            <a href="#" class="left">&#9664;</a>
+            <a href="#" class="right">&#9654;</a>
+            <a href="#" class="down">&#9660;</a>
+          </div>
+          <div class="buttonsAB">
+            <a
+              href="https://img.pokemondb.net/images/typechart.png"
+              id="buttonA"
+              target="_blank"
+              >A</a
+            >
+            <a id="buttonB">B</a>
+          </div>
         </div>
 
         <div class="buttonsBot">
           <button id="selectMore">More</button>
-          <button id="selectAdd">Evo</button>
+          <button id="selectEvo">Evo</button>
         </div>
       </div>
     </div>
