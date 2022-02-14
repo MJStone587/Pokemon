@@ -29,16 +29,12 @@
   </div>
 
   <!-- Gameboy Display / Body -->
-
+<!--
   <body class="pokemonDisplay">
     <div class="gameboy">
-      <!-- to create gameboy appearance-->
       <div class="gameboyDisplayBox">
-        <!-- to create border for inner display box of gameboy-->
         <div class="displayInnerBox">
-          <!-- creates the gameboys game display box-->
           <div class="boxHeader">
-            <!--- sprite images to populate gameboy display -->
             <img
               id="defaultSprite"
               src="./images/xern.png"
@@ -59,17 +55,18 @@
           </div>
         </div>
       </div>
-      <!-- gameboy body below display-->
+    
+
       <div class="gameboyBody">
-        <!-- pokemon name location -->
+     
         <h1 class="name">Name</h1>
-        <!-- pokemon type locations -->
+      
         <h2 class="pokeType1"></h2>
         <h2 class="pokeType2"></h2>
         <h2 class="pokeType3"></h2>
-        <!-- gameboy dpad and other button locations -->
+    
         <div class="buttonsTop">
-          <!--<img src="./images/dpad.png" alt="dpad image" />-->
+      
           <div class="d-pad">
             <div class="d_up">
               <a href="#" class="up">&#9650;</a>
@@ -98,6 +95,49 @@
           <button id="selectEvo">Evo</button>
         </div>
       </div>
+    </div>
+-->
+    <div class="gameboyContainer">
+
+      <div class="gameboyRow1">
+        <div class="gameboyRow1_left"></div>
+        <div class="gameboyRow1_mid">
+          <h1>Ninkendo</h1>
+        </div>
+        <div class="gameboyRow1_right"></div>
+      </div>
+
+      <div class="gameboyRow2">
+        <div class="gameboyRow2_left">
+          <input id="search" type="text" placeholder="Search..." />
+          <button class="submitButton searchSubmit" type="submit">Submit</button>
+
+          <div class="d-pad">
+            <div class="d_up">
+              <a href="#" class="up">&#9650;</a>
+            </div>
+            <div class="d_leftRight">
+              <a href="#" class="left">&#9664;</a
+              ><a href="#" class="right">&#9654;</a>
+            </div>
+            <div class="d_down">
+              <a href="#" class="down">&#9660;</a>
+            </div>
+          </div>
+
+          <button class="leftButtons selectMore">More</button>
+          <button class="leftButtons selectEvo">Evo</button>
+        </div>
+
+        <div class="gameboyRow2_mid"><div class="gameboyRow2_midBox"></div></div>
+        <div class="gameboyRow2_right">
+          <form>
+            <label><br />or select a Pokemon by type...<br /></label>
+            <select name="pokemonType" id="pokeTypeSelect" onchange="changeValue()">
+              <option value="Nothing" selected></option>
+            </select>
+          </form>
+        </div>
     </div>
 
     <!--Modal-->

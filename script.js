@@ -1,7 +1,7 @@
 "use strict";
 
 /* variable assignment */
-const searchSubmit = document.getElementById("submit");
+const searchSubmit = document.querySelector(".searchSubmit");
 const selectChoice = document.getElementById("pokeSelect");
 const newSelect = document.createElement("select");
 const select = document.getElementById("selectMore");
@@ -257,18 +257,20 @@ fillOptions();
 
 /* submit button click event*/
 const pokeCall = function () {
-  document.querySelector(".header").addEventListener("click", function (event) {
-    /* grab data from correct element depending on which submit button is selected */
-    if (event.target.classList.contains("searchSubmit")) {
-      /* store the data within the search field and make it all lowercase*/
-      const search = document.getElementById("search").value.toLowerCase();
-      /* use data within the search field as paramenters for api call */
-      apiSearch(search);
-    } else if (event.target.classList.contains("dropdownSubmit")) {
-      const search = document.querySelector(".dropdown2").value.toLowerCase();
-      apiSearch(search);
-    }
-  });
+  document
+    .querySelector(".submitButton")
+    .addEventListener("click", function (event) {
+      /* grab data from correct element depending on which submit button is selected */
+      if (event.target.classList.contains("searchSubmit")) {
+        /* store the data within the search field and make it all lowercase*/
+        const search = document.getElementById("search").value.toLowerCase();
+        /* use data within the search field as paramenters for api call */
+        apiSearch(search);
+      } else if (event.target.classList.contains("dropdownSubmit")) {
+        const search = document.querySelector(".dropdown2").value.toLowerCase();
+        apiSearch(search);
+      }
+    });
 };
 pokeCall();
 
