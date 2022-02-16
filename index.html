@@ -97,7 +97,8 @@
       </div>
     </div>
 -->
-    <div class="gameboyContainer">
+<div class="gameboyContainer">
+    <div class="gameboy">
 
       <div class="gameboyRow1">
         <div class="gameboyRow1_left"></div>
@@ -117,8 +118,8 @@
               <a href="#" class="up">&#9650;</a>
             </div>
             <div class="d_leftRight">
-              <a href="#" class="left">&#9664;</a
-              ><a href="#" class="right">&#9654;</a>
+              <a href="#" class="left">&#9664;</a>
+              <a href="#" class="right">&#9654;</a>
             </div>
             <div class="d_down">
               <a href="#" class="down">&#9660;</a>
@@ -129,7 +130,27 @@
           <button class="leftButtons selectEvo">Evo</button>
         </div>
 
-        <div class="gameboyRow2_mid"><div class="gameboyRow2_midBox"></div></div>
+        <div class="gameboyRow2_mid">
+          <div class="gameboyRow2_midBox"> 
+          <img
+          id="defaultSprite"
+          src="./images/xern.png"
+          alt="Default Pokemon Picture"
+        />
+        <img id="defaultShiny" src="./images/xernshiny.jpg"' alt="Shiny
+        Pokemon Picture">
+        <img
+          id="backDefault"
+          src="./images/xerneas_active.png"
+          alt="Default Back Picture"
+        />
+        <img
+          id="backShiny"
+          src="./images/Xerneas_active_shiny.jpg"
+          alt="Shiny Back Picture"
+        />
+      </div>
+    </div>
         <div class="gameboyRow2_right">
           <form>
             <label><br />or select a Pokemon by type...<br /></label>
@@ -137,8 +158,19 @@
               <option value="Nothing" selected></option>
             </select>
           </form>
+          <a
+              href="https://img.pokemondb.net/images/typechart.png"
+              class="buttonAB buttonA"
+              target="_blank"
+              >A</a
+            >
+            <a class="buttonAB buttonB">B</a>
+          <div class="vents vent1"></div>
+          <div class="vents vent2"></div>
+          <div class="vents vent3"></div>
         </div>
     </div>
+  </div>
 
     <!--Modal-->
     <div class="modal">

@@ -36,101 +36,11 @@ form label {
   padding: 5px;
   margin-bottom: 2px;
 }
-.pokemonDisplay {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-around;
-  align-items: center;
-  height: 100vh;
-}
-.gameboy {
-  background-color: rgb(172, 171, 171);
-  margin: 5px 5px 5px 5px;
-  border: 2px solid black;
-  width: 25vw;
-  border-radius: 7px;
-}
-.boxHeader img {
-  height: 10vh;
-  width: 10vw;
-}
+
 #pokeTypeSelect {
   margin-bottom: 5px;
   border: 1px solid black;
   border-radius: 3px;
-}
-.boxHeader {
-  background-color: rgb(139, 139, 139);
-  display: flex;
-  height: 33vh;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-}
-.gameboyBody {
-  background-color: rgb(172, 171, 171);
-  display: flex;
-  height: 33vh;
-  flex-flow: column wrap;
-  align-items: center;
-}
-.gameboyBody h2 {
-  height: 20px;
-}
-.buttonsTop {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  width: 100%;
-  margin-top: 10px;
-}
-.buttonsAB {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-}
-.buttonsAB a {
-  border-radius: 50%;
-  text-decoration: none;
-  color: white;
-  border: 10px solid black;
-  background-color: black;
-  padding: 3px 6px 3px 6px;
-  margin: 8px;
-}
-.buttonsAB a:hover {
-  cursor: pointer;
-  color: red;
-}
-.buttonsBot {
-  margin: 30px 0px 0px 0px;
-}
-.buttonsBot button:hover {
-  cursor: pointer;
-  color: rgb(5, 212, 5);
-}
-
-.gameboyDisplayBox {
-  border: 0.1em solid black;
-  margin: 1em;
-}
-.displayInnerBox {
-  border: 0.7em solid black;
-}
-.gameboy h1 {
-  font-size: 2em;
-  text-decoration: underline;
-  margin: 0em;
-}
-.gameboy h2 {
-  font-size: 1.25em;
-  margin: 0em;
-}
-.gameboy h3 {
-  font-size: 1.25em;
-  padding-left: 3em;
 }
 .pokeTypes {
   color: black;
@@ -197,88 +107,129 @@ form label {
   cursor: pointer;
 }
 /*Gameboy*/
+
 .gameboyContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gameboy {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  background-color: rgb(96, 84, 126);
+  height: 60vh;
+  width: 55vw;
+  border-radius: 25%;
+  box-shadow: 1px 2px 1px black;
 }
 .gameboyRow1 {
   display: flex;
   flex-flow: row nowrap;
-  order: 1;
+  align-items: center;
+  margin: 0px 0px 5px 0px;
 }
 .gameboyRow1_left {
-  background-color: rgb(175, 175, 175);
-  height: 30px;
-  width: 260px;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-bottom: 5px solid rgb(96, 84, 126);
+  width: 275px;
+  height: 65px;
   order: 1;
-  margin: 30px 0px 0px 10px;
-  border-radius: 80% 10px 0px 0px;
 }
 .gameboyRow1_mid {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(96, 84, 126);
-  width: 500px;
-  height: 45px;
+  width: 505px;
+  height: 65px;
   order: 2;
-  margin: 20px 0px 0px 0px;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-radius: 10px 10px 0px 0px;
 }
 .gameboyRow1_mid h1 {
-  font-size: 25px;
-  border: 3px solid rgb(50, 50, 50);
-  color: rgb(50, 50, 50);
+  border: 1px solid rgba(0, 0, 0, 0.637);
+  color: rgba(0, 0, 0, 0.637);
+  text-decoration: none;
+  padding: 2px;
 }
 .gameboyRow1_right {
-  height: 30px;
-  width: 260px;
-  background-color: rgb(175, 175, 175);
+  width: 275px;
+  height: 65px;
   order: 3;
-  margin: 30px 10px 0px 0px;
-  border-top: 1px solid black;
-  border-right: 1px solid black;
-  border-bottom: 5px solid rgb(96, 84, 126);
-  border-radius: 10px 80% 0px 0px;
 }
 .gameboyRow2 {
   display: flex;
   flex-flow: row nowrap;
-  order: 2;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 0px 25px 0px;
 }
 .gameboyRow2_left {
+  height: 425px;
+  width: 215px;
+  order: 1;
+  border: 1px solid black;
+}
+.gameboyRow2_left #search {
+  padding: 3px;
+  width: 175px;
+  margin: 10px 0px 0px 20px;
+}
+.searchSubmit {
+  margin: 2px 0px 0px 25px;
+  border: none;
+  width: 175px;
+}
+.gameboyRow2_mid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  height: 425px;
+  width: 625px;
+  order: 2;
+  border: 1px solid black;
+  box-shadow: 0px 1px 0px black;
+}
+.gameboyRow2_midBox {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  height: 475px;
-  width: 210px;
-  background-color: rgb(96, 84, 126);
-  border-left: 2px solid black;
-  border-bottom: 10px solid rgb(155, 155, 155);
-  border-radius: 0px 0px 5px 20%;
+  background-color: gray;
+  height: 325px;
+  width: 525px;
+  align-self: center;
 }
-.leftButtons {
-  color: white;
-  background-color: black;
+.gameboyRow2_midBox img {
+  height: 13vh;
+  width: 13vw;
+}
+.gameboyRow2_right {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 425px;
+  width: 215px;
+  order: 3;
   border: 1px solid black;
-  border-radius: 10px;
 }
-.searchSubmit {
-  align-self: flex-start;
+.gameboyRow2_right a {
+  text-align: center;
+  padding: 8px 3px 8px 3px;
+  background-color: gray;
+  border-radius: 50%;
+  margin-left: 50px;
+  margin-right: 125px;
+  text-decoration: none;
+  color: white;
 }
-.gameboyRow2_left #search {
-  align-self: flex-start;
-  margin-left: 20px;
-  padding: 5px;
+.buttonA {
+  margin-top: 50px;
+}
+.buttonB {
+  margin-top: 10px;
+}
+.gameboyRow2_right a:hover {
+  cursor: pointer;
+  border: 1px solid black;
+  color: black;
 }
 /* D-PAD */
 .d-pad {
@@ -289,6 +240,7 @@ form label {
   align-items: center;
   justify-content: center;
   margin: 0;
+  margin-top: 100px;
 }
 .d-pad a {
   text-decoration: none;
@@ -310,44 +262,28 @@ form label {
   align-self: center;
   order: 3;
   padding: 15px 10px 8px 10px;
+  box-shadow: 0px 2px 0px black;
 }
 .right {
   order: 2;
   padding: 2px 5px 8px 35px;
+  box-shadow: 2px 2px 0px black;
 }
 .left {
   order: 2;
   padding: 2px 35px 8px 5px;
+  box-shadow: 0px 2px 0px black;
 }
 /* END D-PAD */
-
-.gameboyRow2_mid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 500px;
-  width: 600px;
-  background-color: rgb(96, 84, 126);
-  border-bottom: 10px solid rgb(96, 84, 126);
-  border-radius: 0px 0px 5% 5%;
+.vents {
+  width: 125px;
+  border: 1px solid black;
+  margin: 5px;
+  padding: 1px;
+  box-shadow: 0px 1px 1px black;
 }
-.gameboyRow2_midBox {
-  margin: 20px 0px 0px 0px;
-  height: 325px;
-  width: 450px;
-  background-color: gray;
-  border: 30px solid black;
-  border-bottom: 40px solid black;
-}
-.gameboyRow2_right {
-  display: flex;
-  flex-flow: column nowrap;
-  height: 475px;
-  width: 210px;
-  background-color: rgb(96, 84, 126);
-  border-right: 2px solid black;
-  border-bottom: 10px solid rgb(155, 155, 155);
-  border-radius: 0px 0px 25% 5px;
+.vent1 {
+  margin-top: 100px;
 }
 /* Ipad sized styling */
 @media only screen and (max-width: 810px) {
