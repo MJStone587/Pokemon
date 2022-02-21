@@ -13,28 +13,41 @@
     <title>Pokemon Index</title>
   </head>
 
-  <!--Header-->
-  <div class="header">
-    <h1>Enter a Pokemon Name...</h1>
-    <!-- search box to choose pokemon -->
-    <input id="search" type="text" placeholder="Search..." />
-    <button class="searchSubmit" type="submit">Submit</button>
-    <!-- drop down menu to manually search pokemon by type POPULATED BY JS API CALL-->
-    <form>
-      <label><br />or select a Pokemon by type...<br /></label>
-      <select name="pokemonType" id="pokeTypeSelect" onchange="changeValue()">
-        <option value="Nothing" selected></option>
-      </select>
-    </form>
-  </div>
+  <body class="bodyContainer">
+    <div class="gameboyContainer">
+      <div class="gameboy">
+        <div class="gameboyRow1">
+          <div class="gameboyRow1_left"></div>
+          <div class="gameboyRow1_mid">
+            <h3 class="pokeType1"></h3>
+            <h1 class="name">Ninkendo</h1>
+            <h3 class="pokeType2"></h3>
+            <h3 class="pokeType3"></h3>
+          </div>
+          <div class="gameboyRow1_right"></div>
+        </div>
 
-  <!-- Gameboy Display / Body -->
-<!--
-  <body class="pokemonDisplay">
-    <div class="gameboy">
-      <div class="gameboyDisplayBox">
-        <div class="displayInnerBox">
-          <div class="boxHeader">
+        <div class="gameboyRow2">
+          <div class="gameboyRow2_left">
+          <div class="d-pad">
+            <div class="d_up">
+              <a href="#" class="up">&#9650;</a>
+            </div>
+            <div class="d_leftRight">
+              <a href="#" class="left">&#9664;</a>
+              <a href="#" class="right">&#9654;</a>
+            </div>
+            <div class="d_down">
+              <a href="#" class="down">&#9660;</a>
+            </div>
+          </div>
+          <button class="leftButtons selectMore">More</button>
+          <br />
+          <button class="leftButtons selectEvo">Evo</button>
+        </div>
+
+        <div class="gameboyRow2_mid">
+          <div class="gameboyRow2_midBox">
             <img
               id="defaultSprite"
               src="./images/xern.png"
@@ -54,123 +67,41 @@
             />
           </div>
         </div>
-      </div>
-    
 
-      <div class="gameboyBody">
-     
-        <h1 class="name">Name</h1>
-      
-        <h2 class="pokeType1"></h2>
-        <h2 class="pokeType2"></h2>
-        <h2 class="pokeType3"></h2>
-    
-        <div class="buttonsTop">
-      
-          <div class="d-pad">
-            <div class="d_up">
-              <a href="#" class="up">&#9650;</a>
-            </div>
-            <div class="d_leftRight">
-              <a href="#" class="left">&#9664;</a
-              ><a href="#" class="right">&#9654;</a>
-            </div>
-            <div class="d_down">
-              <a href="#" class="down">&#9660;</a>
-            </div>
-          </div>
-          <div class="buttonsAB">
-            <a
-              href="https://img.pokemondb.net/images/typechart.png"
-              id="buttonA"
-              target="_blank"
-              >A</a
-            >
-            <a id="buttonB">B</a>
-          </div>
-        </div>
-
-        <div class="buttonsBot">
-          <button id="selectMore">More</button>
-          <button id="selectEvo">Evo</button>
-        </div>
-      </div>
-    </div>
--->
-<div class="gameboyContainer">
-    <div class="gameboy">
-
-      <div class="gameboyRow1">
-        <div class="gameboyRow1_left"></div>
-        <div class="gameboyRow1_mid">
-          <h1>Ninkendo</h1>
-        </div>
-        <div class="gameboyRow1_right"></div>
-      </div>
-
-      <div class="gameboyRow2">
-        <div class="gameboyRow2_left">
-          <input id="search" type="text" placeholder="Search..." />
-          <button class="submitButton searchSubmit" type="submit">Submit</button>
-
-          <div class="d-pad">
-            <div class="d_up">
-              <a href="#" class="up">&#9650;</a>
-            </div>
-            <div class="d_leftRight">
-              <a href="#" class="left">&#9664;</a>
-              <a href="#" class="right">&#9654;</a>
-            </div>
-            <div class="d_down">
-              <a href="#" class="down">&#9660;</a>
-            </div>
-          </div>
-
-          <button class="leftButtons selectMore">More</button>
-          <button class="leftButtons selectEvo">Evo</button>
-        </div>
-
-        <div class="gameboyRow2_mid">
-          <div class="gameboyRow2_midBox"> 
-          <img
-          id="defaultSprite"
-          src="./images/xern.png"
-          alt="Default Pokemon Picture"
-        />
-        <img id="defaultShiny" src="./images/xernshiny.jpg"' alt="Shiny
-        Pokemon Picture">
-        <img
-          id="backDefault"
-          src="./images/xerneas_active.png"
-          alt="Default Back Picture"
-        />
-        <img
-          id="backShiny"
-          src="./images/Xerneas_active_shiny.jpg"
-          alt="Shiny Back Picture"
-        />
-      </div>
-    </div>
         <div class="gameboyRow2_right">
+          <a
+            href="https://img.pokemondb.net/images/typechart.png"
+            class="buttonAB buttonA"
+            target="_blank"
+            >A</a
+          >
+          <a class="buttonAB buttonB">B</a>
+
+          <input id="search" type="text" placeholder="Search..." />
+            <button
+              class="submitButton searchSubmit"
+              id="searchSubmit"
+              type="submit"
+            >
+              Submit
+            </button>
           <form>
-            <label><br />or select a Pokemon by type...<br /></label>
-            <select name="pokemonType" id="pokeTypeSelect" onchange="changeValue()">
+            <label>or select by type...<br /></label>
+            <select
+              name="pokemonType"
+              id="pokeTypeSelect"
+              onchange="changeValue()"
+            >
               <option value="Nothing" selected></option>
             </select>
           </form>
-          <a
-              href="https://img.pokemondb.net/images/typechart.png"
-              class="buttonAB buttonA"
-              target="_blank"
-              >A</a
-            >
-            <a class="buttonAB buttonB">B</a>
           <div class="vents vent1"></div>
           <div class="vents vent2"></div>
           <div class="vents vent3"></div>
+          <div class="vents vent4"></div>
         </div>
+      </div>
     </div>
-  </div>
 
     <!--Modal-->
     <div class="modal">
@@ -188,5 +119,6 @@
       </div>
     </div>
   </body>
+
   <script src="script.js"></script>
 </html>

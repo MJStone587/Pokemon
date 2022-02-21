@@ -4,7 +4,7 @@
 const searchSubmit = document.querySelector(".searchSubmit");
 const selectChoice = document.getElementById("pokeSelect");
 const newSelect = document.createElement("select");
-const select = document.getElementById("selectMore");
+const select = document.querySelector(".selectMore");
 const close = document.querySelector(".close");
 const modal = document.querySelector(".modal");
 const content = document.querySelector(".modalContent");
@@ -12,7 +12,7 @@ const modalFrom = document.querySelector(".modalFrom");
 const modalEgg = document.querySelector(".modalEgg");
 const modalTo = document.querySelector(".modalTo");
 const modalGen = document.querySelector(".modalGen");
-const modalName = document.querySelector(".name").innerHTML;
+const modalName = document.querySelector(".modalName").innerHTML;
 const modalStats = document.querySelector(".modalStats");
 
 const type1 = ".pokeType1";
@@ -21,7 +21,7 @@ const type3 = ".pokeType3";
 
 let changeCounter = 0;
 
-/* function to change pokeomon types */
+/* function to change pokemon types */
 const typeDisplay = function (data) {
   /* change pokemon types displayed and if there is more than one pokemon type change subsequent fields */
   if (data.types.length === 2) {
@@ -258,7 +258,7 @@ fillOptions();
 /* submit button click event*/
 const pokeCall = function () {
   document
-    .querySelector(".submitButton")
+    .querySelector(".gameboyRow2_right")
     .addEventListener("click", function (event) {
       /* grab data from correct element depending on which submit button is selected */
       if (event.target.classList.contains("searchSubmit")) {
@@ -283,7 +283,7 @@ function changeValue() {
     let typeName = document.getElementById("pokeTypeSelect").value;
     /* store data to create new select element under header */
     const newSelect = document.createElement("select");
-    const header = document.querySelector(".header");
+    const header = document.querySelector(".gameboyRow2_right");
     const newButton = document.createElement("button");
     header.append(newSelect);
     header.append(newButton);
