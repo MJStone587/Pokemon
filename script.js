@@ -213,16 +213,16 @@ const colorChange = function (type) {
       document.querySelector(type).style.color = "#bb31af";
       break;
     case "flying":
-      document.querySelector(type).style.color = "#7d69a4";
+      document.querySelector(type).style.color = "#bb94fa";
       break;
     case "bug":
       document.querySelector(type).style.color = "#5f9d37";
       break;
     case "rock":
-      document.querySelector(type).style.color = "#718550";
+      document.querySelector(type).style.color = "#afc49d";
       break;
     case "ghost":
-      document.querySelector(type).style.color = "#716d9d";
+      document.querySelector(type).style.color = "#382844";
       break;
     case "ground":
       document.querySelector(type).style.color = "#817b46";

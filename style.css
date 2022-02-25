@@ -3,25 +3,13 @@
 html {
   margin: 0;
   width: 100%;
+  font-family: "Press Start 2P", cursive;
 }
 .bodyContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
-form label {
-  font-family: "Press Start 2P", cursive;
-  font-size: 10px;
-}
-
-#pokeTypeSelect {
-  margin-bottom: 5px;
-  border: 1px solid black;
-  border-radius: 3px;
-}
-.pokeTypes {
-  color: black;
 }
 
 /* Modal */
@@ -41,22 +29,26 @@ form label {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  background-color: #fefefe;
+  justify-content: center;
+  background-color: rgb(161, 148, 196);
   margin: auto;
   padding-left: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 60%;
+  border-radius: 5px;
 }
 .modalContent h1 {
   padding: 20px 2px 2px 2px;
+  font-size: 30px;
 }
-.modalContent p {
-  margin: 0;
-  font-size: 13px;
-  color: rgb(71, 71, 71);
-  font-style: italic;
+.modalContent h2 {
+  font-size: 18px;
 }
 .modalRow1 {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-self: center;
   margin: 0;
   padding: 0;
 }
@@ -64,7 +56,7 @@ form label {
   display: flex;
   flex-flow: column wrap;
   margin: 0;
-  padding: 20px 0px 20px 0px;
+  padding: 20px;
 }
 .hidden {
   display: none;
@@ -100,7 +92,7 @@ form label {
   height: 60vh;
   width: 55vw;
   border-radius: 25%;
-  box-shadow: 1px 2px 1px black;
+  box-shadow: 3px 5px 7px black;
 }
 .gameboyRow1 {
   display: flex;
@@ -115,17 +107,35 @@ form label {
 }
 .gameboyRow1_mid {
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
-  width: 505px;
+  justify-content: center;
+  width: 625px;
   height: 65px;
   order: 2;
 }
-.gameboyRow1_mid h1 {
-  border: 1px solid rgba(0, 0, 0, 0.637);
-  color: rgba(0, 0, 0, 0.637);
-  text-decoration: none;
-  padding: 2px;
+.pokeType1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  width: 150px;
+  font-size: 14px;
+}
+.name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: max(20px, 18px);
+  border: 2px solid black;
+  padding: 5px;
+}
+.pokeType2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 70px;
+  font-size: 14px;
 }
 .gameboyRow1_right {
   width: 275px;
@@ -148,13 +158,9 @@ form label {
 }
 .dropdown2 {
   order: 2;
-  margin: 2px 0px 2px 25px;
+  margin: 10px 0px 2px 25px;
   padding: 2px;
   width: 125px;
-}
-.gameboyRow2_left form {
-  padding: 5px;
-  order: 2;
 }
 .leftButtons {
   background-color: rgb(146, 146, 146);
@@ -213,10 +219,19 @@ form label {
   width: 125px;
   margin: 25px 0px 2px 25px;
 }
-
 .gameboyRow2_right form {
-  padding: 10px;
-  margin: 2px 0px 0px 25px;
+  margin: 2px 0px 0px 20px;
+}
+form label {
+  font-family: "Press Start 2P", cursive;
+  font-size: 10px;
+}
+#pokeTypeSelect {
+  margin: 8px 0px 0px 4px;
+  border: 1px solid rgba(0, 0, 0, 0.322);
+  border-radius: 3px;
+  padding: 2px;
+  width: 125px;
 }
 .dropdownSubmit {
   order: 3;
@@ -242,28 +257,36 @@ form label {
   color: white;
   border: 2px solid black;
 }
-.gameboyRow2_right a {
-  text-align: center;
-  padding: 8px 3px 8px 3px;
+.button1,
+.button2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: gray;
-  border-radius: 50%;
-  margin-left: 50px;
-  margin-right: 125px;
-  text-decoration: none;
-  color: white;
+  padding: 5px;
   border: 1px solid transparent;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 10px;
   order: 4;
 }
-.buttonA {
-  margin: 20px 100px 0px 0px;
-}
-.buttonB {
-  margin-top: 10px;
-}
-.gameboyRow2_right a:hover {
-  cursor: pointer;
-  border: 1px solid black;
+.button1 {
   color: black;
+  margin-left: 80px;
+}
+.button2 {
+  color: black;
+  margin-left: 60px;
+}
+.gameboyRow2_right a {
+  text-decoration: none;
+}
+.button1:hover,
+.button2:hover {
+  border: 1px solid black;
 }
 /* D-PAD */
 .d-pad {
