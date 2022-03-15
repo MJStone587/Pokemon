@@ -14,13 +14,16 @@ const modalTo = document.querySelector(".modalTo");
 const modalGen = document.querySelector(".modalGen");
 const modalName = document.querySelector(".modalName").innerHTML;
 const modalStats = document.querySelector(".modalStats");
-const tooltipText = document.querySelector(".tooltipText");
-const tooltip = document.querySelector(".tooltip");
 const pokemonName = document.querySelector(".name").innerHTML;
 const rightBtn = document.querySelector(".right");
 const leftBtn = document.querySelector(".left");
 const upBtn = document.querySelector(".up");
 const downBtn = document.querySelector(".down");
+const selectWeb = document.querySelector(".selectWeb");
+const tooltipText = document.querySelector(".tooltipText");
+const btnAtooltip = document.querySelector(".btnA_tooltip");
+const btnA = document.querySelector("buttonA");
+const btn1 = document.querySelector(".button1");
 
 const type1 = ".pokeType1";
 const type2 = ".pokeType2";
@@ -29,10 +32,16 @@ const type3 = ".pokeType3";
 let changeCounter = 0;
 let idNum = 0;
 
-/* function to change pokemon types */
+selectWeb.addEventListener("click", function () {
+  window.open("https://www.pokemon.com/us/", "_blank");
+});
+btn1.addEventListener("click", function () {
+  window.open("https://img.pokemondb.net/images/typechart.png", "_blank");
+});
+/* function to change pokemon types display */
 const typeDisplay = function (data) {
   /* change pokemon types displayed and if there is more than one pokemon type change subsequent fields */
-  if (data.types.length === 2) {
+  if (data.types.length == 2) {
     document.querySelector(".pokeType1").innerHTML =
       data.types[0].type.name.charAt(0).toUpperCase() +
       data.types[0].type.name.slice(1);
@@ -43,7 +52,7 @@ const typeDisplay = function (data) {
     /* call function to change color of pokemon types */
     colorChange(type1);
     colorChange(type2);
-  } else if (data.types.length === 3) {
+  } else if (data.types.length == 3) {
     document.querySelector(".pokeType1").innerHTML =
       data.types[0].type.name.charAt(0).toUpperCase() +
       data.types[0].type.name.slice(1);
@@ -65,6 +74,7 @@ const typeDisplay = function (data) {
     colorChange(type1);
   }
 };
+
 /* function to change modal evolved from  data with correct information from api call */
 const evolvedFrom = (species) => {
   if (
@@ -82,7 +92,6 @@ const evolvedFrom = (species) => {
           "Evolved From: " +
           species.evolves_from_species.name.charAt(0).toUpperCase() +
           species.evolves_from_species.name.slice(1);
-        /* + `<img src=${newImg} width="100px" height="100px" margin="0";> `; */
       });
   }
 };
@@ -109,7 +118,6 @@ const baseStats = (data) => {
 const evolveInto = (species) => {
   let evolveUrl = species.evolution_chain.url;
   modalTo.innerHTML = "Evolves Into:";
-  tooltipText.innerHTML = " ";
   fetch(evolveUrl)
     .then((response) => response.json())
     .then((data) => {
@@ -133,6 +141,8 @@ const eggGroup = (species) => {
     }
   }
 };
+
+// search pokeapi based on id and populate display
 const searchByID = function (id) {
   fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
     /* response transform to json to read */
@@ -165,6 +175,7 @@ const searchByID = function (id) {
       idNum = data.id;
     });
 };
+
 /* api call based on pokemon selected in dropdown list or in search field */
 const apiSearch = function (search) {
   fetch(`https://pokeapi.co/api/v2/pokemon/${search}/`)
@@ -264,6 +275,64 @@ const colorChange = function (type) {
   }
 };
 
+// D-Pad buttons increment ID of pokemon allowing user to browse through all pokemon
+rightBtn.addEventListener("click", function () {
+  idNum++;
+  if (idNum > 898) {
+    idNum = 0;
+    idNum++;
+    searchByID(idNum);
+  } else {
+    searchByID(idNum);
+  }
+});
+leftBtn.addEventListener("click", function () {
+  idNum--;
+  if (idNum <= 0) {
+    idNum = 898;
+    searchByID(idNum);
+  } else {
+    searchByID(idNum);
+  }
+});
+upBtn.addEventListener("click", function () {
+  idNum += 10;
+  if (idNum >= 879) {
+    idNum = 0;
+    idNum += 10;
+    searchByID(idNum);
+  } else {
+    idNum += 10;
+    searchByID(idNum);
+  }
+});
+downBtn.addEventListener("click", function () {
+  idNum -= 10;
+  if (idNum <= 10) {
+    idNum = 898;
+    idNum -= 10;
+    searchByID(idNum);
+  } else {
+    idNum -= 10;
+    searchByID(idNum);
+  }
+});
+/* More button fuction to open modal */
+selectMore.onclick = function () {
+  modal.style.display = "block";
+  console.log("more button clicked");
+};
+/* close modal if clicking anywhere on modal */
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+/* close modal on clicking x button*/
+close.onclick = function () {
+  modal.style.display = "none";
+};
+
 /* Fetch all pokemon types from api call and populate select options*/
 const fillOptions = function () {
   fetch("https://pokeapi.co/api/v2/type/?limit=18/")
@@ -307,9 +376,9 @@ function changeValue() {
   const arr = [];
   changeCounter++;
   if (changeCounter <= 1) {
-    /* get the poke type from the poketypeselect and store it in a variable */
+    //get the poke type from the poketypeselect and store it in a variable
     let typeName = document.getElementById("pokeTypeSelect").value;
-    /* store data to create new select element under header */
+    // store data to create new select element under header
     const newSelect = document.createElement("select");
     const header = document.querySelector(".gameboyRow2_right");
     const newButton = document.createElement("button");
@@ -318,11 +387,13 @@ function changeValue() {
     newSelect.classList.add("dropdown2");
     newButton.innerHTML = "Submit";
     newButton.classList.add("dropdownSubmit");
+    btnAtooltip.style.top = "55.5%";
+    btnAtooltip.style.right = "22%";
     fetch(`https://pokeapi.co/api/v2/type/${typeName}`)
-      /* translate data with json */
+      // translate data with json
       .then((response) => response.json())
       .then((data) => {
-        /* populate dropdwon list options with pokemon names from api */
+        // populate array with pokemon names from api
         for (let i = 0; i < data.pokemon.length; i++) {
           arr.push(
             data.pokemon[i].pokemon.name.charAt(0).toUpperCase() +
@@ -332,7 +403,7 @@ function changeValue() {
         arr.sort();
       })
       .then(() => {
-        /* populate dropdwon list options with pokemon names from api */
+        // populate dropdwon list options with pokemon names from array
         for (let i = 0; i < arr.length; i++) {
           const newOption = document.createElement("option");
           newOption.value = arr[i];
@@ -347,10 +418,10 @@ function changeValue() {
       selectEl.remove(i);
     }
     fetch(`https://pokeapi.co/api/v2/type/${typeName}`)
-      /* translate data with json */
+      // translate data with json
       .then((response) => response.json())
       .then((data) => {
-        /* add all the pokemon to our array and sort */
+        // add all the pokemon to our array and sort
         for (let i = 0; i < data.pokemon.length; i++) {
           arr.push(
             data.pokemon[i].pokemon.name.charAt(0).toUpperCase() +
@@ -360,7 +431,7 @@ function changeValue() {
         arr.sort();
       })
       .then(() => {
-        /* populate dropdwon list options with pokemon names from our array after being sorted*/
+        // populate dropdwon list options with pokemon names from our array after being sorted
         for (let i = 0; i < arr.length; i++) {
           const newOption = document.createElement("option");
           newOption.value = arr[i];
@@ -369,70 +440,4 @@ function changeValue() {
         }
       });
   }
-  /* More button fuction to open modal */
-  selectMore.onclick = function () {
-    modal.style.display = "block";
-  };
-  /* close modal if clicking anywhere on modal */
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  };
-  /* close modal on clicking x button*/
-  close.onclick = function () {
-    modal.style.display = "none";
-  };
-
-  // tooltip click event to show or hide tooltip text
-  tooltip.addEventListener("click", function () {
-    tooltipText.style.visibility = "visible";
-  });
-
-  //tooltip click event to change searched pokemon to tooltiptext name
-  tooltipText.addEventListener("click", function () {
-    let evoName = tooltipText.innerHTML;
-    apiSearch(evoName.toLowerCase());
-  });
 }
-rightBtn.addEventListener("click", function () {
-  idNum++;
-  if (idNum > 898) {
-    idNum = 0;
-    idNum++;
-    searchByID(idNum);
-  } else {
-    searchByID(idNum);
-  }
-});
-leftBtn.addEventListener("click", function () {
-  idNum--;
-  if (idNum <= 0) {
-    idNum = 898;
-    searchByID(idNum);
-  } else {
-    searchByID(idNum);
-  }
-});
-upBtn.addEventListener("click", function () {
-  idNum += 10;
-  if (idNum >= 879) {
-    idNum = 0;
-    idNum += 10;
-    searchByID(idNum);
-  } else {
-    idNum += 10;
-    searchByID(idNum);
-  }
-});
-downBtn.addEventListener("click", function () {
-  idNum -= 10;
-  if (idNum <= 10) {
-    idNum = 898;
-    idNum -= 10;
-    searchByID(idNum);
-  } else {
-    idNum -= 10;
-    searchByID(idNum);
-  }
-});

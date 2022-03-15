@@ -36,6 +36,7 @@
             <div class="d_leftRight">
               <a href="#" class="left">&#9664;</a>
               <a href="#" class="right">&#9654;</a>
+              <span class="tooltipText right_tooltip">previous/next pokemon</span>
             </div>
             <div class="d_down">
               <a href="#" class="down">&#9660;</a>
@@ -43,10 +44,7 @@
           </div>
           <button class="leftButtons selectMore">More</button>
           <br />
-          <div class="tooltip">
-            <button class="leftButtons selectEvo">Evo</button>
-            <span class="tooltipText"></span>
-          </div>
+            <button class="leftButtons selectWeb">Website</button>
         </div>
 
         <div class="gameboyRow2_mid">
@@ -74,14 +72,15 @@
         <div class="gameboyRow2_right">
           <div class="button1">
           <a
-            href="https://img.pokemondb.net/images/typechart.png"
             class="buttonAB buttonA"
-            target="_blank"
             >A</a
-          ></div>
+          ><span class="tooltipText btnA_tooltip">type chart</span>
+        </div>
           
           <div class="button2">
-          <a class="buttonAB buttonB">B</a></div>
+          <a class="buttonAB buttonB">B</a>
+          <span></span>
+        </div>
 
           <input id="search" type="text" placeholder="Search..." />
             <button
@@ -114,7 +113,7 @@
       <div class="modalContent">
         <span class="close">&times;</span>
         <div class="modalRow1">
-          <h1 class="modalName">Name:</h1>
+          <h1 class="modalName">Name:Please Select a Pokemon</h1>
           <h2 class="modalEgg">Egg Groups:</h2>
           <h2 class="modalFrom">Evolved From:</h2>
           <h2 class="modalTo">Evolves into:</h2>
