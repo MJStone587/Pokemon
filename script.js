@@ -2,8 +2,6 @@
 
 /* variable assignment */
 const searchSubmit = document.querySelector(".searchSubmit");
-const selectChoice = document.getElementById("pokeSelect");
-const newSelect = document.createElement("select");
 const selectMore = document.querySelector(".selectMore");
 const close = document.querySelector(".close");
 const modal = document.querySelector(".modal");
@@ -11,10 +9,8 @@ const content = document.querySelector(".modalContent");
 const modalFrom = document.querySelector(".modalFrom");
 const modalEgg = document.querySelector(".modalEgg");
 const modalTo = document.querySelector(".modalTo");
-const modalGen = document.querySelector(".modalGen");
 const modalName = document.querySelector(".modalName").innerHTML;
 const modalStats = document.querySelector(".modalStats");
-const pokemonName = document.querySelector(".name").innerHTML;
 const rightBtn = document.querySelector(".right");
 const leftBtn = document.querySelector(".left");
 const upBtn = document.querySelector(".up");
@@ -177,7 +173,7 @@ const searchByID = function (id) {
 };
 
 /* api call based on pokemon selected in dropdown list or in search field */
-const apiSearch = function (search) {
+const apiSearchByName = function (search) {
   fetch(`https://pokeapi.co/api/v2/pokemon/${search}/`)
     /* response transform to json to read */
     .then((response) => response.json())
@@ -333,8 +329,8 @@ close.onclick = function () {
   modal.style.display = "none";
 };
 
-/* Fetch all pokemon types from api call and populate select options*/
-const fillOptions = function () {
+/* Fetch all pokemon TYPES from api call and populate select options*/
+const pokemonTypes = function () {
   fetch("https://pokeapi.co/api/v2/type/?limit=18/")
     .then((response) => response.json())
     .then((data) => {
@@ -350,10 +346,10 @@ const fillOptions = function () {
       }
     });
 };
-fillOptions();
+pokemonTypes();
 
 /* submit button click event*/
-const pokeCall = function () {
+const submitClick = function () {
   document
     .querySelector(".gameboyRow2_right")
     .addEventListener("click", function (event) {
@@ -362,16 +358,16 @@ const pokeCall = function () {
         /* store the data within the search field and make it all lowercase*/
         const search = document.getElementById("search").value.toLowerCase();
         /* use data within the search field as paramenters for api call */
-        apiSearch(search);
+        apiSearchByName(search);
       } else if (event.target.classList.contains("dropdownSubmit")) {
         const search = document.querySelector(".dropdown2").value.toLowerCase();
-        apiSearch(search);
+        apiSearchByName(search);
       }
     });
 };
-pokeCall();
+submitClick();
 
-/* when a type is chosen from drop down list create new drop down list populated with pokemon of said type */
+/* create and populate second dropdown list from the type selected*/
 function changeValue() {
   const arr = [];
   changeCounter++;
@@ -390,7 +386,6 @@ function changeValue() {
     btnAtooltip.style.top = "55.5%";
     btnAtooltip.style.right = "22%";
     fetch(`https://pokeapi.co/api/v2/type/${typeName}`)
-      // translate data with json
       .then((response) => response.json())
       .then((data) => {
         // populate array with pokemon names from api
@@ -418,7 +413,6 @@ function changeValue() {
       selectEl.remove(i);
     }
     fetch(`https://pokeapi.co/api/v2/type/${typeName}`)
-      // translate data with json
       .then((response) => response.json())
       .then((data) => {
         // add all the pokemon to our array and sort
