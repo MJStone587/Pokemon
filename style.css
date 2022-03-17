@@ -576,6 +576,7 @@ form label {
     background-color: rgb(146, 146, 146);
     border: 1px solid black;
     width: 70px;
+    height: 30px;
     padding: 2px;
     font-size: 12px;
     border-radius: 5px;
@@ -790,7 +791,7 @@ form label {
     font-size: 11px;
     position: absolute;
     z-index: 1;
-    left: 34.5%;
+    left: 150%;
     opacity: 0;
     transition: 0.3s;
     margin-left: -60px;
