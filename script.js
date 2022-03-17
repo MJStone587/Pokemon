@@ -321,7 +321,6 @@ downBtn.addEventListener("click", function () {
 /* More button fuction to open modal */
 selectMore.onclick = function () {
   modal.style.display = "block";
-  console.log("more button clicked");
 };
 /* close modal if clicking anywhere on modal */
 window.onclick = function (event) {
