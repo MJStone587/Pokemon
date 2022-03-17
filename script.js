@@ -18,8 +18,10 @@ const downBtn = document.querySelector(".down");
 const selectWeb = document.querySelector(".selectWeb");
 const tooltipText = document.querySelector(".tooltipText");
 const btnAtooltip = document.querySelector(".btnA_tooltip");
+const btnBtooltip = document.querySelector(".btnB_tooltip");
 const btnA = document.querySelector("buttonA");
 const btn1 = document.querySelector(".button1");
+const btn2 = document.querySelector(".button2");
 
 const type1 = ".pokeType1";
 const type2 = ".pokeType2";
@@ -33,6 +35,9 @@ selectWeb.addEventListener("click", function () {
 });
 btn1.addEventListener("click", function () {
   window.open("https://img.pokemondb.net/images/typechart.png", "_blank");
+});
+btn2.addEventListener("click", function () {
+  window.open("https://www.serebii.net/", "_blank");
 });
 /* function to change pokemon types display */
 const typeDisplay = function (data) {
@@ -385,6 +390,8 @@ function changeValue() {
     newButton.classList.add("dropdownSubmit");
     btnAtooltip.style.top = "55.5%";
     btnAtooltip.style.right = "22%";
+    btnBtooltip.style.top = "60%";
+    btnBtooltip.style.right = "23%";
     fetch(`https://pokeapi.co/api/v2/type/${typeName}`)
       .then((response) => response.json())
       .then((data) => {

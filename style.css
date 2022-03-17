@@ -244,7 +244,7 @@ form label {
 }
 .searchSubmit {
   margin: 2px 0px 0px 25px;
-  width: 125px;
+  width: 135px;
 }
 .submitButton,
 .dropdownSubmit {
@@ -298,8 +298,28 @@ form label {
   transition: 0.3s;
   margin-left: -60px;
 }
-
+.btnB_tooltip {
+  visibility: hidden;
+  width: 100px;
+  background-color: rgb(61, 61, 61);
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  font-size: 13px;
+  position: absolute;
+  z-index: 1;
+  top: 53%;
+  right: 23%;
+  opacity: 0;
+  transition: 0.3s;
+  margin-left: -60px;
+}
 .button1:hover .btnA_tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+.button2:hover .btnB_tooltip {
   visibility: visible;
   opacity: 1;
 }
@@ -656,22 +676,22 @@ form label {
     padding: 5px;
     border: 1px solid transparent;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 20px;
   }
   .button1 {
     position: absolute;
     color: black;
     margin-left: 100px;
     right: 150px;
-    bottom: 300px;
+    bottom: 275px;
   }
   .button2 {
     position: absolute;
     right: 200px;
-    bottom: 225px;
+    bottom: 200px;
   }
   .btnA_tooltip {
     visibility: hidden;
@@ -684,13 +704,27 @@ form label {
     font-size: 13px;
     position: absolute;
     z-index: 1;
-    top: 48%;
-    right: 22%;
+    top: 50%;
+    left: 185%;
     opacity: 0;
     transition: 0.3s;
-    margin-left: -60px;
   }
-
+  .btnB_tooltip {
+    visibility: hidden;
+    width: 100px;
+    background-color: rgb(61, 61, 61);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    font-size: 13px;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 185%;
+    opacity: 0;
+    transition: 0.3s;
+  }
   .button1:hover .btnA_tooltip {
     visibility: visible;
     opacity: 1;
@@ -704,7 +738,7 @@ form label {
   }
   .button1:hover,
   .button2:hover {
-    border: 1px solid black;
+    border: 2px solid black;
   }
   /* D-PAD */
   .d-pad {
@@ -715,7 +749,7 @@ form label {
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: 200px;
+    bottom: 235px;
     left: 150px;
   }
   .d-pad a {
