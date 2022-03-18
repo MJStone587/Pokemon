@@ -6,9 +6,7 @@ const selectMore = document.querySelector(".selectMore");
 const close = document.querySelector(".close");
 const modal = document.querySelector(".modal");
 const content = document.querySelector(".modalContent");
-const modalFrom = document.querySelector(".modalFrom");
 const modalEgg = document.querySelector(".modalEgg");
-const modalTo = document.querySelector(".modalTo");
 const modalName = document.querySelector(".modalName").innerHTML;
 const modalStats = document.querySelector(".modalStats");
 const rightBtn = document.querySelector(".right");
@@ -26,7 +24,6 @@ const btn2 = document.querySelector(".button2");
 const type1 = ".pokeType1";
 const type2 = ".pokeType2";
 const type3 = ".pokeType3";
-
 let changeCounter = 0;
 let idNum = 0;
 
@@ -76,27 +73,6 @@ const typeDisplay = function (data) {
   }
 };
 
-/* function to change modal evolved from  data with correct information from api call */
-const evolvedFrom = (species) => {
-  if (
-    species.evolves_from_species == null ||
-    species.evolves_from_species == "is undefined"
-  ) {
-    modalFrom.innerHTML = "Evolved From: N/A";
-  } else {
-    let name = species.evolves_from_species.name;
-    fetch(`https://pokeapi.co/api/v2/pokemon/${name}/`)
-      .then((response) => response.json())
-      .then((url) => {
-        let newImg = url.sprites.front_default;
-        modalFrom.innerHTML =
-          "Evolved From: " +
-          species.evolves_from_species.name.charAt(0).toUpperCase() +
-          species.evolves_from_species.name.slice(1);
-      });
-  }
-};
-
 /* get base stats from API and add to modal gets input from apiSearch() */
 const baseStats = (data) => {
   modalStats.innerHTML = "Base Stats: ";
@@ -116,9 +92,9 @@ const baseStats = (data) => {
 };
 
 /* function to change "evolve into" data on modal from api call. Takes input from apiSearch()  */
-const evolveInto = (species) => {
+const evolutionChain = (species) => {
   let evolveUrl = species.evolution_chain.url;
-  modalTo.innerHTML = "Evolves Into:";
+  const errorArr = [];
   fetch(evolveUrl)
     .then((response) => response.json())
     .then((data) => {
@@ -154,8 +130,7 @@ const searchByID = function (id) {
         .then((newResponse) => newResponse.json())
         .then((species) => {
           /* call functions to fill modal */
-          evolvedFrom(species);
-          evolveInto(species);
+          evolutionChain(species);
           eggGroup(species);
         });
       baseStats(data);
@@ -188,8 +163,7 @@ const apiSearchByName = function (search) {
         .then((newResponse) => newResponse.json())
         .then((species) => {
           /* call functions to fill modal */
-          evolvedFrom(species);
-          evolveInto(species);
+          evolutionChain(species);
           eggGroup(species);
         });
       baseStats(data);
