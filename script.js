@@ -94,11 +94,75 @@ const baseStats = (data) => {
 /* function to change "evolve into" data on modal from api call. Takes input from apiSearch()  */
 const evolutionChain = (species) => {
   let evolveUrl = species.evolution_chain.url;
+  let modalEvoChain = document.querySelector(".modalEvoChain");
+  modalEvoChain.innerHTML = "Evolution Chain: ";
   const errorArr = [];
   fetch(evolveUrl)
     .then((response) => response.json())
     .then((data) => {
       let name = document.querySelector(".name").innerHTML.toLowerCase();
+      try {
+        if (
+          (data.chain.species.name == name && data.chain.evolves_to == "") ||
+          (data.chain.evolves_to == null && data.chain.species.name == name)
+        ) {
+          modalEvoChain.innerHTML =
+            "Evolution Chain: " +
+            data.chain.species.name.charAt(0).toUpperCase() +
+            data.chain.species.name.slice(1);
+        } else if (
+          data.chain.species.name == name &&
+          data.chain.evolves_to[0].evolves_to == ""
+        ) {
+          modalEvoChain.innerHTML =
+            "Evolution Chain: " +
+            data.chain.species.name.charAt(0).toUpperCase() +
+            data.chain.species.name.slice(1) +
+            " > " +
+            data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
+            data.chain.evolves_to[0].species.name.slice(1);
+        } else if (
+          data.chain.evolves_to[0].species.name == name &&
+          data.chain.evolves_to[0].evolve_to == ""
+        ) {
+          modalEvoChain.innerHTML =
+            "Evolution Chain: " +
+            data.chain.species.name.charAt(0).toUpperCase() +
+            data.chain.species.name.slice(1) +
+            " > " +
+            data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
+            data.chain.evolves_to[0].species.name.slice(1);
+        } else if (data.chain.evolves_to[0].species.name == name) {
+          modalEvoChain.innerHTML =
+            "Evolution Chain: " +
+            data.chain.species.name.charAt(0).toUpperCase() +
+            data.chain.species.name.slice(1) +
+            " > " +
+            data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
+            data.chain.evolves_to[0].species.name.slice(1) +
+            " > " +
+            data.chain.evolves_to[0].evolves_to[0].species.name
+              .charAt(0)
+              .toUpperCase() +
+            data.chain.evolves_to[0].evolves_to[0].species.name.slice(1);
+        } else {
+          modalEvoChain.innerHTML =
+            "Evolution Chain: " +
+            data.chain.species.name.charAt(0).toUpperCase() +
+            data.chain.species.name.slice(1) +
+            " > " +
+            data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
+            data.chain.evolves_to[0].species.name.slice(1) +
+            " > " +
+            data.chain.evolves_to[0].evolves_to[0].species.name
+              .charAt(0)
+              .toUpperCase() +
+            data.chain.evolves_to[0].evolves_to[0].species.name.slice(1);
+        }
+      } catch (err) {
+        errorArr.push(err);
+        console.log(errorArr);
+      }
     });
 };
 
