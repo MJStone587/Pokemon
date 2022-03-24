@@ -7,7 +7,7 @@ const close = document.querySelector(".close");
 const modal = document.querySelector(".modal");
 const content = document.querySelector(".modalContent");
 const modalEgg = document.querySelector(".modalEgg");
-const modalName = document.querySelector(".modalName").innerHTML;
+let modalName = document.querySelector(".modalName").innerHTML;
 const modalStats = document.querySelector(".modalStats");
 const rightBtn = document.querySelector(".right");
 const leftBtn = document.querySelector(".left");
@@ -24,6 +24,7 @@ const btn2 = document.querySelector(".button2");
 const type1 = ".pokeType1";
 const type2 = ".pokeType2";
 const type3 = ".pokeType3";
+
 let changeCounter = 0;
 let idNum = 0;
 
@@ -100,114 +101,134 @@ const evolutionChain = (species) => {
   fetch(evolveUrl)
     .then((response) => response.json())
     .then((data) => {
-      let name = document.querySelector(".name").innerHTML.toLowerCase();
-      if (
-        (data.chain.species.name === name && data.chain.evolves_to == "") ||
-        (data.chain.evolves_to == null && data.chain.species.name === name)
-      ) {
-        modalEvoChain.innerHTML =
-          "Evolution Chain: " +
-          data.chain.species.name.charAt(0).toUpperCase() +
-          data.chain.species.name.slice(1);
-      } else if (
-        data.chain.species.name == name &&
-        data.chain.evolves_to[0].evolves_to == ""
-      ) {
-        modalEvoChain.innerHTML =
-          "Evolution Chain: " +
-          data.chain.species.name.charAt(0).toUpperCase() +
-          data.chain.species.name.slice(1) +
-          " > " +
-          data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
-          data.chain.evolves_to[0].species.name.slice(1);
-      } else if (
-        (data.chain.evolves_to[0].species.name === name &&
-          data.chain.evolves_to[0].evolve_to == null) ||
-        (data.chain.evolves_to[0].species.name === name &&
-          data.chain.evolves_to[0].evolve_to == "")
-      ) {
-        modalEvoChain.innerHTML =
-          "Evolution Chain: " +
-          data.chain.species.name.charAt(0).toUpperCase() +
-          data.chain.species.name.slice(1) +
-          " > " +
-          data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
-          data.chain.evolves_to[0].species.name.slice(1);
-      } else if (
-        (data.chain.evolves_to.length >= 3 && data.id !== 145) ||
-        (data.chain.evolves_to.length >= 3 && data.id !== 90)
-      ) {
-        modalEvoChain.innerHTML =
-          "Evolution Chain: " +
-          data.chain.species.name.charAt(0).toUpperCase() +
-          data.chain.species.name.slice(1) +
-          " > " +
-          data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
-          data.chain.evolves_to[0].species.name.slice(1) +
-          " > " +
-          data.chain.evolves_to[1].species.name.charAt(0).toUpperCase() +
-          data.chain.evolves_to[1].species.name.slice(1) +
-          " > " +
-          data.chain.evolves_to[2].species.name.charAt(0).toUpperCase() +
-          data.chain.evolves_to[2].species.name.slice(1);
-      } else if (
-        (data.chain.evolves_to.length >= 2 && data.id !== 145) ||
-        (data.chain.evolves_to.length >= 2 && data.id !== 90)
-      ) {
-        modalEvoChain.innerHTML =
-          "Evolution Chain: " +
-          data.chain.species.name.charAt(0).toUpperCase() +
-          data.chain.species.name.slice(1) +
-          " > " +
-          data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
-          data.chain.evolves_to[0].species.name.slice(1) +
-          " > " +
-          data.chain.evolves_to[1].species.name.charAt(0).toUpperCase() +
-          data.chain.evolves_to[1].species.name.slice(1);
-      } else if (
-        (data.chain.evolves_to.length >= 1 && data.id !== 145) ||
-        (data.chain.evolves_to.length >= 1 && data.id !== 90)
-      ) {
-        modalEvoChain.innerHTML =
-          "Evolution Chain: " +
-          data.chain.species.name.charAt(0).toUpperCase() +
-          data.chain.species.name.slice(1) +
-          " > " +
-          data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
-          data.chain.evolves_to[0].species.name.slice(1) +
-          " > " +
-          data.chain.evolves_to[0].evolves_to[0].species.name
-            .charAt(0)
-            .toUpperCase() +
-          data.chain.evolves_to[0].evolves_to[0].species.name.slice(1);
-      } else if (data.id === 145) {
-        modalEvoChain.innerHTML =
-          "Evolution Chain: " +
-          data.chain.species.name.charAt(0).toUpperCase() +
-          data.chain.species.name.slice(1) +
-          " > " +
-          data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
-          data.chain.evolves_to[0].species.name.slice(1) +
-          " > " +
-          data.chain.evolves_to[0].evolves_to[0].species.name
-            .charAt(0)
-            .toUpperCase() +
-          data.chain.evolves_to[0].evolves_to[0].species.name.slice(1);
-      } else if (data.chain.evolves_to[0].species.name === name) {
-        modalEvoChain.innerHTML =
-          "Evolution Chain: " +
-          data.chain.species.name.charAt(0).toUpperCase() +
-          data.chain.species.name.slice(1) +
-          " > " +
-          data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
-          data.chain.evolves_to[0].species.name.slice(1) +
-          " > " +
-          data.chain.evolves_to[0].evolves_to[0].species.name
-            .charAt(0)
-            .toUpperCase() +
-          data.chain.evolves_to[0].evolves_to[0].species.name.slice(1);
-      } else {
-        modalEvoChain.innerHTML = "Evolution Chain: N/A";
+      try {
+        if (data.chain.evolves_to.length > 1) {
+          modalEvoChain.innerHTML =
+            "Evolution Chain: " +
+            data.chain.species.name.charAt(0).toUpperCase() +
+            data.chain.species.name.slice(1) +
+            " > " +
+            data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
+            data.chain.evolves_to[0].species.name.slice(1) +
+            " > " +
+            data.chain.evolves_to[1].species.name.charAt(0).toUpperCase() +
+            data.chain.evolves_to[1].species.name.slice(1);
+        } else if (
+          data.chain.evolves_to.length > 1 &&
+          data.chain.evolves_to.evolves_to.length > 1
+        ) {
+          modalEvoChain.innerHTML =
+            "Evolution Chain: " +
+            data.chain.species.name.charAt(0).toUpperCase() +
+            data.chain.species.name.slice(1) +
+            " > " +
+            data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
+            data.chain.evolves_to[0].species.name.slice(1) +
+            " > " +
+            data.chain.evolves_to[1].species.name.charAt(0).toUpperCase() +
+            data.chain.evolves_to[1].species.name.slice(1);
+          +" > " +
+            data.chain.evolves_to[0].evolves_to[0].species.name
+              .charAt(0)
+              .toUpperCase() +
+            data.chain.evolves_to[0].evolves_to[0].species.name.slice(1) +
+            " || " +
+            data.chain.evolves_to[0].evolves_to[1].species.name
+              .charAt(0)
+              .toUpperCase() +
+            data.chain.evolves_to[0].evolves_to[1].species.name.slice(1);
+        } else if (
+          data.chain.evolves_to.length > 1 &&
+          data.chain.evolves_to.evolves_to.length > 0
+        ) {
+          modalEvoChain.innerHTML =
+            "Evolution Chain: " +
+            data.chain.species.name.charAt(0).toUpperCase() +
+            data.chain.species.name.slice(1) +
+            " > " +
+            data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
+            data.chain.evolves_to[0].species.name.slice(1) +
+            " > " +
+            data.chain.evolves_to[1].species.name.charAt(0).toUpperCase() +
+            data.chain.evolves_to[1].species.name.slice(1);
+          +" > " +
+            data.chain.evolves_to[0].evolves_to[0].species.name
+              .charAt(0)
+              .toUpperCase() +
+            data.chain.evolves_to[0].evolves_to[0].species.name.slice(1);
+        } else if (data.chain.evolves_to.length > 0) {
+          // differentiation from pokemon like pansear and conkeldurr PERSONAL NOTE'
+          modalEvoChain.innerHTML =
+            "Evolution Chain: " +
+            data.chain.species.name.charAt(0).toUpperCase() +
+            data.chain.species.name.slice(1) +
+            " > " +
+            data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
+            data.chain.evolves_to[0].species.name.slice(1);
+          if (data.chain.evolves_to[0].evolves_to[0].is_baby == false) {
+            modalEvoChain.innerHTML =
+              "Evolution Chain: " +
+              data.chain.species.name.charAt(0).toUpperCase() +
+              data.chain.species.name.slice(1) +
+              " > " +
+              data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
+              data.chain.evolves_to[0].species.name.slice(1) +
+              " > " +
+              data.chain.evolves_to[0].evolves_to[0].species.name
+                .charAt(0)
+                .toUpperCase() +
+              data.chain.evolves_to[0].evolves_to[0].species.name.slice(1);
+          }
+        } else if (
+          data.chain.evolves_to.length > 0 &&
+          data.chain.evolves_to.evolves_to.length > 1
+        ) {
+          modalEvoChain.innerHTML =
+            "Evolution Chain: " +
+            data.chain.species.name.charAt(0).toUpperCase() +
+            data.chain.species.name.slice(1) +
+            " > " +
+            data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
+            data.chain.evolves_to[0].species.name.slice(1) +
+            " > " +
+            data.chain.evolves_to[0].evolves_to[0].species.name
+              .charAt(0)
+              .toUpperCase() +
+            data.chain.evolves_to[0].evolves_to[0].species.name.slice(1) +
+            " || " +
+            data.chain.evolves_to[0].evolves_to[1].species.name
+              .charAt(0)
+              .toUpperCase() +
+            data.chain.evolves_to[0].evolves_to[1].species.name.slice(1);
+        } else if (
+          data.chain.evolves_to.length > 0 &&
+          data.chain.evolves_to.evolves_to.length > 0
+        ) {
+          modalEvoChain.innerHTML =
+            "Evolution Chain: " +
+            data.chain.species.name.charAt(0).toUpperCase() +
+            data.chain.species.name.slice(1) +
+            " > " +
+            data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
+            data.chain.evolves_to[0].species.name.slice(1) +
+            " > " +
+            data.chain.evolves_to[0].evolves_to[0].species.name
+              .charAt(0)
+              .toUpperCase() +
+            data.chain.evolves_to[0].evolves_to[0].species.name.slice(1);
+        } else if (
+          data.chain.evolves_to.length > 0 &&
+          data.chain.evolves_to.evolves_to.length === 0
+        ) {
+          console.log("fkit");
+        } else {
+          modalEvoChain.innerHTML =
+            "Evolution Chain: " +
+            data.chain.species.name.charAt(0).toUpperCase() +
+            data.chain.species.name.slice(1);
+        }
+      } catch (err) {
+        errorArr.push(err);
       }
     });
 };
