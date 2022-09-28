@@ -1,4 +1,6 @@
 # Pokemon
+Site Preview: https://mjstone587.github.io/Pokemon/
+
 Why? : 
 
   I built this small program to practice working with API and as a fan of Pokemon I was always frustrated using the Serebii site. I wanted a smaller more concise pokemon site that gave me the information I wanted without having to slog may way through serebii. 
@@ -13,4 +15,4 @@ What did I learn? :
   
   Thankfully functions make most code essentially modular, but I could see how in a much larger projects this could become troublesome. There is no doubt that in bigger projects new features will be an inevitability. Knowing this the scalability and cleanliness of code is that much more important. This shed a light on my own code. I want my code to be cleaner, easier to read / understand, and more  "modular" so that it is easier to add new features and scale up. This is something I imagine will improve with more time and practice but I want it to become something I am conscious of.
  
-Site Preview: https://mjstone587.github.io/Pokemon/
+
