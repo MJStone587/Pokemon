@@ -78,100 +78,72 @@ html {
   text-decoration: none;
   cursor: pointer;
 }
-/*Gameboy*/
 
+/*Gameboy*/
 .gameboyContainer {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
 }
 .gameboy {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background-color: rgb(96, 84, 126);
-  height: 60vh;
-  width: 55vw;
-  border-radius: 25%;
+  max-height: 80vh;
+  max-width: 85vw;
+  min-width: 85vw;
+  min-height: 80vh;
+  overflow: hidden;
+  border-radius: 20%;
   box-shadow: 3px 5px 7px black;
 }
 .gameboyRow1 {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  margin: 0px 0px 5px 0px;
+  justify-content: center;
+  min-height: 8vh;
+  width: 100%;
+  margin: 0.4rem 0rem 0.4rem 0rem;
   font-family: "Press Start 2P", cursive;
+  border-top-right-radius: 20%;
+  border-top-left-radius: 20%;
 }
-.gameboyRow1_left {
-  width: 275px;
-  height: 65px;
-  order: 1;
-}
-.gameboyRow1_mid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 625px;
-  height: 65px;
-  order: 2;
-}
-.pokeType1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 70px;
-  width: 150px;
-  font-size: 14px;
-}
-.name {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: max(20px, 18px);
+.gameboyRow1 h1 {
+  margin: 0rem 1rem;
+  font-size: calc(20px + (24 - 20) * ((100vw - 300px) / (1600 - 300)));
   border: 2px solid black;
-  padding: 5px;
+  padding: 0.5rem;
 }
-.pokeType2 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 150px;
-  height: 70px;
-  font-size: 14px;
-}
-.gameboyRow1_right {
-  width: 275px;
-  height: 65px;
-  order: 3;
+.gameboyRow1 h3 {
+  font-size: calc(16px + (18 - 16) * ((100vw - 300px) / (1600 - 300)));
 }
 .gameboyRow2 {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
+  width: 100%;
+  flex: 2;
+  justify-content: flex-start;
   align-items: center;
   margin: 0px 0px 25px 0px;
 }
 .gameboyRow2_left {
   display: flex;
   flex-flow: column nowrap;
-  height: 425px;
-  width: 215px;
+  flex: 1;
   order: 1;
 }
-/* dropdown2 is created in javascript when selecting pokemon type */
-.dropdown2 {
-  order: 2;
-  margin: 10px 0px 2px 25px;
-  padding: 2px;
-  width: 125px;
-}
+
 .leftButtons {
   background-color: rgb(146, 146, 146);
   border: 1px solid black;
-  width: 60px;
+  width: 6rem;
   padding: 2px;
-  font-size: 12px;
+  font-size: calc(10px + (12 - 10) * ((100vw - 300px) / (1600 - 300)));
   border-radius: 5px;
   order: 2;
 }
@@ -180,86 +152,84 @@ html {
   box-shadow: 1px 1px 0px black;
 }
 .selectMore {
-  margin: 100px 0px 0px 125px;
+  align-self: center;
+  margin-top: 5rem;
 }
 .selectWeb {
-  margin: 5px 0px 0px 125px;
+  align-self: center;
 }
-
 .gameboyRow2_mid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-  height: 425px;
-  width: 625px;
-  order: 2;
-  border: 1px solid black;
-  box-shadow: 0px 1px 0px black;
-}
-.gameboyRow2_midBox {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   background-color: gray;
-  height: 325px;
-  width: 525px;
-  align-self: center;
+  height: 32rem;
+  width: 30rem;
+  flex: 2;
+  order: 2;
+  padding: 0.5rem;
+  border: 1rem solid black;
+  box-shadow: 0px 1px 0px black;
 }
-.gameboyRow2_midBox img {
-  height: 15vh;
-  width: 13vw;
+.gameboyRow2_mid img {
+  width: 40%;
+  height: 40%;
 }
 .gameboyRow2_right {
   display: flex;
   flex-flow: column nowrap;
-  height: 425px;
-  width: 215px;
+  align-items: center;
+  justify-content: center;
+  row-gap: 0.5rem;
+  border-bottom-right-radius: 25%;
   order: 3;
+  flex: 1;
 }
 .gameboyRow2_right #search {
-  padding: 3px;
-  width: 125px;
-  margin: 25px 0px 2px 25px;
+  width: 45%;
+  height: 1.75rem;
 }
 .gameboyRow2_right form {
-  margin: 2px 0px 0px 20px;
+  width: 80%;
+  margin: 0rem 0rem 0rem 9rem;
 }
 form label {
   font-family: "Press Start 2P", cursive;
-  font-size: 10px;
+  font-size: calc(10px + (11 - 10) * ((100vw - 300px) / (1600 - 300)));
+}
+/* dropdown2 is created in javascript once a pokemon type has been selected */
+/* DropDown 2 */
+.dropdown2 {
+  order: 2;
+  width: 45%;
+  height: 1.75rem;
 }
 #pokeTypeSelect {
-  margin: 8px 0px 0px 4px;
   border: 1px solid rgba(0, 0, 0, 0.322);
   border-radius: 3px;
-  padding: 2px;
-  width: 125px;
+  width: 45%;
+  height: 1.75rem;
 }
 .dropdownSubmit {
   order: 3;
-  width: 125px;
-  margin: 0px 10px 10px 25px;
-}
-.searchSubmit {
-  margin: 2px 0px 0px 25px;
-  width: 135px;
 }
 .submitButton,
 .dropdownSubmit {
   background-color: rgb(117, 126, 207);
   color: black;
+  height: 1.75rem;
+  width: 45%;
   font-weight: bold;
-  font-size: 15px;
-  border: 2px solid transparent;
+  font-size: calc(12px + (15 - 12) * ((100vw - 300px) / (1600 - 300)));
+  border: 1px solid transparent;
   border-radius: 2px;
 }
 .submitButton:hover,
 .dropdownSubmit:hover {
   cursor: pointer;
   color: white;
-  border: 2px solid black;
+  border: 1px solid black;
 }
 .button1,
 .button2 {
@@ -267,50 +237,54 @@ form label {
   align-items: center;
   justify-content: center;
   background-color: gray;
-  padding: 5px;
+  padding: 0.5rem;
   border: 1px solid transparent;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 2rem;
+  height: 2rem;
+  color: black;
   cursor: pointer;
-  font-size: 15px;
+  font-size: calc(12px + (15 - 12) * ((100vw - 300px) / (1600 - 300)));
   margin-top: 10px;
   order: 4;
 }
+.button1:hover,
+.button2:hover {
+  border: 1px solid black;
+}
 .button1 {
-  color: black;
-  margin-left: 80px;
+  margin-left: 8rem;
 }
 .btnA_tooltip {
   visibility: hidden;
-  width: 100px;
+  width: 8rem;
   background-color: rgb(61, 61, 61);
   color: #fff;
   text-align: center;
-  padding: 5px 0;
+  padding: 5px 0px;
   border-radius: 6px;
-  font-size: 13px;
+  font-size: calc(10px + (13 - 10) * ((100vw - 300px) / (1600 - 300)));
   position: absolute;
   z-index: 1;
   top: 48%;
-  right: 22%;
+  left: 80%;
   opacity: 0;
   transition: 0.3s;
   margin-left: -60px;
 }
 .btnB_tooltip {
   visibility: hidden;
-  width: 100px;
+  width: 7rem;
   background-color: rgb(61, 61, 61);
   color: #fff;
   text-align: center;
-  padding: 5px 0;
+  padding: 5px 0px;
   border-radius: 6px;
-  font-size: 13px;
+  font-size: calc(10px + (13 - 10) * ((100vw - 300px) / (1600 - 300)));
   position: absolute;
-  z-index: 1;
-  top: 53%;
-  right: 23%;
+  z-index: 2;
+  top: 30%;
+  left: 76%;
   opacity: 0;
   transition: 0.3s;
   margin-left: -60px;
@@ -325,19 +299,16 @@ form label {
 }
 .button2 {
   color: black;
-  margin-left: 60px;
+  margin-left: 3rem;
 }
 .gameboyRow2_right a {
   text-decoration: none;
 }
-.button1:hover,
-.button2:hover {
-  border: 1px solid black;
-}
+
 /* D-PAD */
 .d-pad {
   order: 1;
-  height: 100px;
+  height: 9.5rem;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -347,7 +318,7 @@ form label {
 }
 .d-pad a {
   text-decoration: none;
-  font-size: 25px;
+  font-size: calc(20px + (25 - 20) * ((100vw - 300px) / (1600 - 300)));
   color: rgb(90, 90, 90);
   border: 1px solid rgb(146, 146, 146);
   background-color: rgb(146, 146, 146);
@@ -359,31 +330,37 @@ form label {
 .up {
   align-self: center;
   order: 1;
-  padding: 8px 10px 15px 10px;
+  padding: 0.5rem 0.7rem 0.98rem 0.65rem;
 }
 .down {
   align-self: center;
   order: 3;
-  padding: 15px 10px 8px 10px;
+  padding: 0.9rem 0.8rem 0.5rem 0.8rem;
   box-shadow: 0px 2px 0px black;
 }
 .right {
   order: 2;
-  padding: 2px 5px 8px 35px;
+  padding: 0.2rem 0.4rem 0.5rem 2.1rem;
   box-shadow: 2px 2px 0px black;
 }
+.left {
+  order: 2;
+  padding: 0.12rem 2.1rem 0.5rem 0.4rem;
+  box-shadow: 0px 2px 0px black;
+}
+
 .right_tooltip {
   visibility: hidden;
-  width: 100px;
+  width: 10rem;
   background-color: rgb(49, 49, 49);
   color: #fff;
   text-align: center;
-  padding: 5px 0;
+  padding: 0.4rem 0rem;
   border-radius: 6px;
-  font-size: 11px;
+  font-size: calc(11px + (12 - 11) * ((100vw - 300px) / (1600 - 300)));
   position: absolute;
   z-index: 1;
-  left: 34.5%;
+  left: 25%;
   opacity: 0;
   transition: 0.3s;
   margin-left: -60px;
@@ -392,1667 +369,16 @@ form label {
   visibility: visible;
   opacity: 1;
 }
-.left {
-  order: 2;
-  padding: 2px 35px 8px 5px;
-  box-shadow: 0px 2px 0px black;
-}
 
 /* END D-PAD */
 .vents {
-  width: 125px;
+  width: 9rem;
   border: 1px solid black;
-  margin: 5px;
+  margin: 0.4rem;
   padding: 1px;
   box-shadow: 0px 1px 1px black;
   order: 5;
 }
 .vent1 {
   margin-top: 30px;
-}
-/* Ipad sized styling */
-@media only screen and (max-width: 810px) {
-  .bodyContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  /* Modal */
-  .modal {
-    display: none;
-    z-index: 5;
-    padding-top: 300px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0, 0.8);
-    position: fixed;
-  }
-  .modalContent {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    margin: auto;
-    padding-left: 20px;
-    border: 1px solid #888;
-    width: 65%;
-    border-radius: 5px;
-  }
-  .modalContent h1 {
-    padding: 20px 2px 2px 2px;
-    font-size: 25px;
-  }
-  .modalContent h2 {
-    font-size: 17px;
-  }
-  .modalRow1 {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-self: center;
-    margin: 0;
-    padding: 0;
-  }
-  .modalName {
-    font-family: "Press Start 2P", cursive;
-  }
-  .modalRow2 {
-    display: flex;
-    flex-flow: column wrap;
-    margin: 0;
-    padding: 20px;
-  }
-  .hidden {
-    display: none;
-  }
-  .close {
-    align-self: flex-end;
-    margin: 0;
-    padding-right: 20px;
-    color: #aaaaaa;
-    font-size: 40px;
-    font-weight: bold;
-  }
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  /*Gameboy*/
-
-  .gameboyContainer {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-  }
-  .gameboy {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    background-color: rgb(96, 84, 126);
-    height: 95vh;
-    width: 90vw;
-    border-radius: 10%;
-    box-shadow: 3px 5px 7px black;
-    border: 1px solid black;
-  }
-  .gameboyRow1 {
-    display: flex;
-    flex-flow: row nowrap;
-    margin: 0px 0px 1px 0px;
-    width: 97%;
-    font-family: "Press Start 2P", cursive;
-  }
-  .gameboyRow1_left {
-    width: 275px;
-    height: 65px;
-    order: 1;
-  }
-  .gameboyRow1_mid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 625px;
-    height: 65px;
-    order: 2;
-  }
-  .pokeType1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 70px;
-    width: 150px;
-    font-size: 14px;
-  }
-  .name {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: max(20px, 18px);
-    border: 2px solid black;
-    padding: 5px;
-  }
-  .pokeType2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    height: 70px;
-    font-size: 14px;
-  }
-  .gameboyRow1_right {
-    width: 275px;
-    height: 65px;
-    order: 3;
-  }
-  .gameboyRow2 {
-    display: flex;
-    flex-flow: column nowrap;
-    width: 100%;
-  }
-  .gameboyRow2_left {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-end;
-    height: 250px;
-    width: 100%;
-    order: 3;
-  }
-  /* dropdown2 is created in javascript when selecting pokemon type */
-  .dropdown2 {
-    order: 2;
-    margin: 10px 0px 2px 15px;
-    padding: 2px;
-    width: 135px;
-  }
-  .leftButtons {
-    background-color: rgb(146, 146, 146);
-    border: 1px solid black;
-    width: 70px;
-    height: 30px;
-    padding: 2px;
-    font-size: 12px;
-    border-radius: 5px;
-    position: absolute;
-  }
-  .selectMore {
-    left: 200px;
-    bottom: 30px;
-  }
-  .selectWeb {
-    right: 300px;
-    bottom: 30px;
-  }
-  .leftButtons:hover {
-    cursor: pointer;
-    box-shadow: 1px 1px 0px black;
-  }
-  .gameboyRow2_mid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    height: 425px;
-    width: 650px;
-    order: 1;
-    border: 1px solid black;
-    box-shadow: 0px 1px 0px black;
-    margin-bottom: 25 px;
-  }
-  .gameboyRow2_midBox {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: gray;
-    height: 360px;
-    width: 575px;
-    align-self: center;
-  }
-  .gameboyRow2_midBox img {
-    height: 15vh;
-    width: 18vw;
-  }
-  .gameboyRow2_right {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    height: 275px;
-    order: 2;
-    margin: 10px 0px 0px 0px;
-  }
-  .gameboyRow2_right #search {
-    padding: 3px;
-    width: 125px;
-    margin: 25px 0px 2px 50px;
-  }
-  .formLabel {
-    font-family: "Press Start 2P", cursive;
-    font-size: 10px;
-    margin-left: 30px;
-  }
-  #pokeTypeSelect {
-    margin: 5px 0px 0px 30px;
-    border: 1px solid rgba(0, 0, 0, 0.322);
-    border-radius: 3px;
-    padding: 2px;
-    width: 135px;
-  }
-  .dropdownSubmit {
-    order: 3;
-    width: 135px;
-    margin: 0px 10px 10px 25px;
-  }
-  .searchSubmit {
-    margin: 2px 0px 165px 50px;
-    width: 135px;
-  }
-  .submitButton,
-  .dropdownSubmit {
-    background-color: rgb(117, 126, 207);
-    color: black;
-    font-weight: bold;
-    font-size: 15px;
-    border: 2px solid transparent;
-    border-radius: 2px;
-  }
-  .submitButton:hover,
-  .dropdownSubmit:hover {
-    cursor: pointer;
-    color: white;
-    border: 2px solid black;
-  }
-  .button1,
-  .button2 {
-    background-color: gray;
-    padding: 5px;
-    border: 1px solid transparent;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    font-size: 20px;
-  }
-  .button1 {
-    position: absolute;
-    color: black;
-    margin-left: 100px;
-    right: 150px;
-    bottom: 275px;
-  }
-  .button2 {
-    position: absolute;
-    right: 200px;
-    bottom: 200px;
-  }
-  .btnA_tooltip {
-    visibility: hidden;
-    width: 100px;
-    background-color: rgb(61, 61, 61);
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    font-size: 13px;
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 185%;
-    opacity: 0;
-    transition: 0.3s;
-  }
-  .btnB_tooltip {
-    visibility: hidden;
-    width: 100px;
-    background-color: rgb(61, 61, 61);
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    font-size: 13px;
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 185%;
-    opacity: 0;
-    transition: 0.3s;
-  }
-  .button1:hover .btnA_tooltip {
-    visibility: visible;
-    opacity: 1;
-  }
-  .button2 {
-    color: black;
-    margin-left: 60px;
-  }
-  .gameboyRow2_right a {
-    text-decoration: none;
-  }
-  .button1:hover,
-  .button2:hover {
-    border: 2px solid black;
-  }
-  /* D-PAD */
-  .d-pad {
-    order: 1;
-    height: 100px;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    bottom: 235px;
-    left: 150px;
-  }
-  .d-pad a {
-    text-decoration: none;
-    font-size: 25px;
-    color: rgb(90, 90, 90);
-    border: 1px solid rgb(146, 146, 146);
-    background-color: rgb(146, 146, 146);
-    overflow: hidden;
-  }
-  .d-pad a:hover {
-    color: black;
-  }
-  .up {
-    align-self: center;
-    order: 1;
-    padding: 8px 10px 15px 10px;
-  }
-  .down {
-    align-self: center;
-    order: 3;
-    padding: 15px 10px 8px 10px;
-    box-shadow: 0px 2px 0px black;
-  }
-  .right {
-    order: 2;
-    padding: 2px 5px 8px 35px;
-    box-shadow: 2px 2px 0px black;
-  }
-  .right_tooltip {
-    visibility: hidden;
-    width: 100px;
-    background-color: rgb(49, 49, 49);
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    font-size: 11px;
-    position: absolute;
-    z-index: 1;
-    left: 150%;
-    opacity: 0;
-    transition: 0.3s;
-    margin-left: -60px;
-  }
-  .d_leftRight:hover .right_tooltip {
-    visibility: visible;
-    opacity: 1;
-  }
-  .left {
-    order: 2;
-    padding: 2px 35px 8px 5px;
-    box-shadow: 0px 2px 0px black;
-  }
-
-  /* END D-PAD */
-  .vents {
-    display: none;
-    width: 125px;
-    border: 1px solid black;
-    margin: 5px;
-    padding: 1px;
-    box-shadow: 0px 1px 1px black;
-    order: 5;
-  }
-  .vent1 {
-    margin-top: 30px;
-  }
-}
-/* Iphone11 pro Max + sized styling */
-@media only screen and (max-width: 414px) {
-  .bodyContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  /* Modal */
-  .modal {
-    display: none;
-    z-index: 5;
-    padding-top: 300px;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0, 0.8);
-    position: fixed;
-  }
-  .modalContent {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    margin: auto;
-    padding-left: 20px;
-    border: 1px solid #888;
-    width: 65%;
-    border-radius: 5px;
-  }
-  .modalContent h1 {
-    padding: 20px 2px 2px 2px;
-    font-size: 20px;
-  }
-  .modalContent h2 {
-    font-size: 13.5px;
-  }
-  .modalRow1 {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-self: center;
-    margin: 0;
-    padding: 0;
-  }
-  .modalName {
-    font-family: "Press Start 2P", cursive;
-  }
-  .modalRow2 {
-    display: flex;
-    flex-flow: column wrap;
-    margin: 0;
-    padding: 8px;
-  }
-  .hidden {
-    display: none;
-  }
-  .close {
-    align-self: flex-end;
-    margin: 0;
-    padding-right: 20px;
-    color: #aaaaaa;
-    font-size: 40px;
-    font-weight: bold;
-  }
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  /*Gameboy*/
-
-  .gameboyContainer {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-  }
-  .gameboy {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    background-color: rgb(96, 84, 126);
-    height: 92vh;
-    width: 96vw;
-    border-radius: 10%;
-    box-shadow: 3px 5px 7px black;
-    border: 1px solid black;
-  }
-  .gameboyRow1 {
-    display: flex;
-    flex-flow: row nowrap;
-    margin: 0px 0px 1px 0px;
-    width: 97%;
-    font-family: "Press Start 2P", cursive;
-  }
-  .gameboyRow1_left {
-    width: 275px;
-    height: 65px;
-    order: 1;
-  }
-  .gameboyRow1_mid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 625px;
-    height: 65px;
-    order: 2;
-  }
-  .pokeType1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 70px;
-    width: 125px;
-    font-size: 11px;
-  }
-  .name {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: max(20px, 18px);
-    border: 2px solid black;
-    padding: 4px;
-    font-size: 15px;
-  }
-  .pokeType2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 125px;
-    height: 70px;
-    font-size: 11px;
-  }
-  .gameboyRow1_right {
-    width: 275px;
-    height: 65px;
-    order: 3;
-  }
-  .gameboyRow2 {
-    display: flex;
-    flex-flow: column nowrap;
-    width: 100%;
-  }
-  .gameboyRow2_left {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-end;
-    height: 250px;
-    width: 100%;
-    order: 3;
-  }
-  /* dropdown2 is created in javascript when selecting pokemon type */
-  .dropdown2 {
-    order: 2;
-    margin: 10px 0px 2px 15px;
-    padding: 2px;
-    width: 135px;
-  }
-  .leftButtons {
-    background-color: rgb(146, 146, 146);
-    border: 1px solid black;
-    width: 60px;
-    height: 30px;
-    padding: 2px;
-    font-size: 13px;
-    border-radius: 5px;
-    position: absolute;
-  }
-  .selectMore {
-    left: 100px;
-    bottom: 32px;
-  }
-  .selectWeb {
-    right: 200px;
-    bottom: 32px;
-  }
-  .leftButtons:hover {
-    cursor: pointer;
-    box-shadow: 1px 1px 0px black;
-  }
-  .gameboyRow2_mid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    height: 375px;
-    width: 94vw;
-    order: 1;
-    border: 1px solid black;
-    box-shadow: 0px 1px 0px black;
-    margin-bottom: 25 px;
-  }
-  .gameboyRow2_midBox {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: gray;
-    height: 325px;
-    width: 350px;
-    align-self: center;
-  }
-  .gameboyRow2_midBox img {
-    height: 15vh;
-    width: 18vw;
-  }
-  .gameboyRow2_right {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    height: 275px;
-    order: 2;
-    margin: 10px 0px 0px 0px;
-  }
-  .gameboyRow2_right #search {
-    padding: 3px;
-    width: 125px;
-    margin: 25px 0px 2px 50px;
-  }
-  .formLabel {
-    font-family: "Press Start 2P", cursive;
-    font-size: 10px;
-    margin-left: 30px;
-  }
-  #pokeTypeSelect {
-    margin: 5px 0px 0px 30px;
-    border: 1px solid rgba(0, 0, 0, 0.322);
-    border-radius: 3px;
-    padding: 2px;
-    width: 135px;
-  }
-  .dropdownSubmit {
-    order: 3;
-    width: 135px;
-    margin: 0px 10px 10px 25px;
-  }
-  .searchSubmit {
-    margin: 2px 0px 165px 50px;
-    width: 135px;
-  }
-  .submitButton,
-  .dropdownSubmit {
-    background-color: rgb(117, 126, 207);
-    color: black;
-    font-weight: bold;
-    font-size: 15px;
-    border: 2px solid transparent;
-    border-radius: 2px;
-  }
-  .submitButton:hover,
-  .dropdownSubmit:hover {
-    cursor: pointer;
-    color: white;
-    border: 2px solid black;
-  }
-  .button1,
-  .button2 {
-    background-color: gray;
-    padding: 5px;
-    border: 1px solid transparent;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-    font-size: 17px;
-  }
-  .button1 {
-    position: absolute;
-    color: black;
-    margin-left: 100px;
-    right: 75px;
-    bottom: 200px;
-  }
-  .button2 {
-    position: absolute;
-    right: 100px;
-    bottom: 130px;
-  }
-  .btnA_tooltip {
-    visibility: hidden;
-    width: 100px;
-    background-color: rgb(61, 61, 61);
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    font-size: 13px;
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 225%;
-    opacity: 0;
-    transition: 0.3s;
-  }
-  .btnB_tooltip {
-    visibility: hidden;
-    width: 100px;
-    background-color: rgb(61, 61, 61);
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    font-size: 13px;
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 185%;
-    opacity: 0;
-    transition: 0.3s;
-  }
-  .button1:hover .btnA_tooltip {
-    visibility: visible;
-    opacity: 1;
-  }
-  .button2 {
-    color: black;
-    margin-left: 60px;
-  }
-  .gameboyRow2_right a {
-    text-decoration: none;
-  }
-  .button1:hover,
-  .button2:hover {
-    border: 2px solid black;
-  }
-  /* D-PAD */
-  .d-pad {
-    order: 1;
-    height: 100px;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    bottom: 150px;
-    left: 50px;
-  }
-  .d-pad a {
-    text-decoration: none;
-    font-size: 25px;
-    color: rgb(90, 90, 90);
-    border: 1px solid rgb(146, 146, 146);
-    background-color: rgb(146, 146, 146);
-    overflow: hidden;
-  }
-  .d-pad a:hover {
-    color: black;
-  }
-  .up {
-    align-self: center;
-    order: 1;
-    padding: 8px 10px 15px 10px;
-  }
-  .down {
-    align-self: center;
-    order: 3;
-    padding: 15px 10px 8px 10px;
-    box-shadow: 0px 2px 0px black;
-  }
-  .right {
-    order: 2;
-    padding: 2px 5px 8px 35px;
-    box-shadow: 2px 2px 0px black;
-  }
-  .right_tooltip {
-    visibility: hidden;
-    width: 100px;
-    background-color: rgb(49, 49, 49);
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    font-size: 11px;
-    position: absolute;
-    z-index: 1;
-    left: 150%;
-    opacity: 0;
-    transition: 0.3s;
-    margin-left: -60px;
-  }
-  .d_leftRight:hover .right_tooltip {
-    visibility: visible;
-    opacity: 1;
-  }
-  .left {
-    order: 2;
-    padding: 2px 35px 8px 5px;
-    box-shadow: 0px 2px 0px black;
-  }
-
-  /* END D-PAD */
-  .vents {
-    display: none;
-    width: 125px;
-    border: 1px solid black;
-    margin: 5px;
-    padding: 1px;
-    box-shadow: 0px 1px 1px black;
-    order: 5;
-  }
-  .vent1 {
-    margin-top: 30px;
-  }
-}
-/* Iphone 11 pro and below */
-@media only screen and (max-width: 375px) {
-  .bodyContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  /* Modal */
-  .modal {
-    display: none;
-    z-index: 5;
-    padding-top: 300px;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0, 0.8);
-    position: fixed;
-  }
-  .modalContent {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    margin: auto;
-    padding-left: 20px;
-    border: 1px solid #888;
-    width: 65%;
-    height: 350px;
-    border-radius: 5px;
-  }
-  .modalContent h1 {
-    padding: 20px 2px 2px 2px;
-    font-size: 18px;
-  }
-  .modalContent h2 {
-    font-size: 12px;
-  }
-  .modalRow1 {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-self: center;
-    margin: 0;
-    padding: 0;
-  }
-  .modalName {
-    font-family: "Press Start 2P", cursive;
-  }
-  .modalRow2 {
-    display: flex;
-    flex-flow: column wrap;
-    margin: 0;
-    padding: 8px;
-    font-size: 11px;
-  }
-  .hidden {
-    display: none;
-  }
-  .close {
-    align-self: flex-end;
-    margin: 0;
-    padding-right: 20px;
-    color: #aaaaaa;
-    font-size: 33px;
-    font-weight: bold;
-  }
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  /*Gameboy*/
-
-  .gameboyContainer {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-  }
-  .gameboy {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    background-color: rgb(96, 84, 126);
-    height: 92vh;
-    width: 96vw;
-    border-radius: 10%;
-    box-shadow: 3px 5px 7px black;
-    border: 1px solid black;
-  }
-  .gameboyRow1 {
-    display: flex;
-    flex-flow: row nowrap;
-    margin: 0px 0px 1px 0px;
-    width: 97%;
-    font-family: "Press Start 2P", cursive;
-  }
-  .gameboyRow1_left {
-    width: 275px;
-    height: 65px;
-    order: 1;
-  }
-  .gameboyRow1_mid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 625px;
-    height: 65px;
-    order: 2;
-  }
-  .pokeType1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 70px;
-    width: 120px;
-    font-size: 10px;
-  }
-  .name {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: max(20px, 18px);
-    border: 2px solid black;
-    padding: 4px;
-    font-size: 13px;
-  }
-  .pokeType2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 125px;
-    height: 70px;
-    font-size: 10px;
-  }
-  .gameboyRow1_right {
-    width: 275px;
-    height: 65px;
-    order: 3;
-  }
-  .gameboyRow2 {
-    display: flex;
-    flex-flow: column nowrap;
-    width: 100%;
-  }
-  .gameboyRow2_left {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-end;
-    height: 250px;
-    width: 100%;
-    order: 3;
-  }
-  /* dropdown2 is created in javascript when selecting pokemon type */
-  .dropdown2 {
-    order: 2;
-    margin: 10px 0px 2px 15px;
-    padding: 2px;
-    width: 135px;
-  }
-  .leftButtons {
-    background-color: rgb(146, 146, 146);
-    border: 1px solid black;
-    width: 60px;
-    height: 23px;
-    padding: 2px;
-    font-size: 12px;
-    border-radius: 5px;
-    position: absolute;
-  }
-  .selectMore {
-    left: 80px;
-    bottom: 32px;
-  }
-  .selectWeb {
-    right: 180px;
-    bottom: 32px;
-  }
-  .leftButtons:hover {
-    cursor: pointer;
-    box-shadow: 1px 1px 0px black;
-  }
-  .gameboyRow2_mid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    height: 350px;
-    width: 93vw;
-    order: 1;
-    border: 1px solid black;
-    box-shadow: 0px 1px 0px black;
-    margin-bottom: 25 px;
-  }
-  .gameboyRow2_midBox {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: gray;
-    height: 300px;
-    width: 325px;
-    align-self: center;
-  }
-  .gameboyRow2_midBox img {
-    height: 14vh;
-    width: 28vw;
-  }
-  .gameboyRow2_right {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    height: 275px;
-    order: 2;
-    margin: 10px 0px 0px 0px;
-  }
-  .gameboyRow2_right #search {
-    padding: 3px;
-    width: 125px;
-    margin: 25px 0px 2px 10px;
-  }
-  .formLabel {
-    font-family: "Press Start 2P", cursive;
-    font-size: 10px;
-    margin-left: 30px;
-  }
-  #pokeTypeSelect {
-    margin: 5px 0px 0px 30px;
-    border: 1px solid rgba(0, 0, 0, 0.322);
-    border-radius: 3px;
-    padding: 2px;
-    width: 135px;
-  }
-  .dropdownSubmit {
-    order: 3;
-    width: 135px;
-    margin: 0px 10px 10px 25px;
-  }
-  .searchSubmit {
-    margin: 2px 0px 165px 10px;
-    width: 135px;
-  }
-  .submitButton,
-  .dropdownSubmit {
-    background-color: rgb(117, 126, 207);
-    color: black;
-    font-weight: bold;
-    font-size: 15px;
-    border: 2px solid transparent;
-    border-radius: 2px;
-  }
-  .submitButton:hover,
-  .dropdownSubmit:hover {
-    cursor: pointer;
-    color: white;
-    border: 2px solid black;
-  }
-  .button1,
-  .button2 {
-    background-color: gray;
-    padding: 5px;
-    border: 1px solid transparent;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  .button1 {
-    position: absolute;
-    color: black;
-    margin-left: 100px;
-    right: 60px;
-    bottom: 160px;
-  }
-  .button2 {
-    position: absolute;
-    right: 100px;
-    bottom: 110px;
-  }
-  .btnA_tooltip {
-    visibility: hidden;
-    width: 100px;
-    background-color: rgb(61, 61, 61);
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    font-size: 13px;
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 225%;
-    opacity: 0;
-    transition: 0.3s;
-  }
-  .btnB_tooltip {
-    visibility: hidden;
-    width: 100px;
-    background-color: rgb(61, 61, 61);
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    font-size: 13px;
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 185%;
-    opacity: 0;
-    transition: 0.3s;
-  }
-  .button1:hover .btnA_tooltip {
-    visibility: visible;
-    opacity: 1;
-  }
-  .button2 {
-    color: black;
-    margin-left: 60px;
-  }
-  .gameboyRow2_right a {
-    text-decoration: none;
-  }
-  .button1:hover,
-  .button2:hover {
-    border: 2px solid black;
-  }
-  /* D-PAD */
-  .d-pad {
-    order: 1;
-    height: 60px;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    bottom: 125px;
-    left: 25px;
-  }
-  .d-pad a {
-    text-decoration: none;
-    font-size: 25px;
-    color: rgb(90, 90, 90);
-    border: 1px solid rgb(146, 146, 146);
-    background-color: rgb(146, 146, 146);
-    overflow: hidden;
-  }
-  .d-pad a:hover {
-    color: black;
-  }
-  .up {
-    align-self: center;
-    order: 1;
-    padding: 8px 10px 15px 10px;
-  }
-  .down {
-    align-self: center;
-    order: 3;
-    padding: 15px 10px 8px 10px;
-    box-shadow: 0px 2px 0px black;
-  }
-  .right {
-    order: 2;
-    padding: 2px 5px 8px 35px;
-    box-shadow: 2px 2px 0px black;
-  }
-  .right_tooltip {
-    visibility: hidden;
-    width: 100px;
-    background-color: rgb(49, 49, 49);
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    font-size: 11px;
-    position: absolute;
-    z-index: 1;
-    left: 150%;
-    opacity: 0;
-    transition: 0.3s;
-    margin-left: -60px;
-  }
-  .d_leftRight:hover .right_tooltip {
-    visibility: visible;
-    opacity: 1;
-  }
-  .left {
-    order: 2;
-    padding: 2px 35px 8px 5px;
-    box-shadow: 0px 2px 0px black;
-  }
-
-  /* END D-PAD */
-  .vents {
-    display: none;
-    width: 125px;
-    border: 1px solid black;
-    margin: 5px;
-    padding: 1px;
-    box-shadow: 0px 1px 1px black;
-    order: 5;
-  }
-  .vent1 {
-    margin-top: 30px;
-  }
-}
-@media only screen and (max-width: 360px) {
-  .bodyContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  /* Modal */
-  .modal {
-    display: none;
-    z-index: 5;
-    padding-top: 200px;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0, 0.8);
-    position: fixed;
-  }
-  .modalContent {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    margin: auto;
-    padding-left: 20px;
-    border: 1px solid #888;
-    width: 65%;
-    height: 375px;
-    border-radius: 5px;
-  }
-  .modalContent h1 {
-    padding: 20px 2px 2px 2px;
-    font-size: 18px;
-  }
-  .modalContent h2 {
-    font-size: 12px;
-  }
-  .modalRow1 {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-self: center;
-    margin: 0;
-    padding: 0;
-  }
-  .modalName {
-    font-family: "Press Start 2P", cursive;
-  }
-  .modalRow2 {
-    display: flex;
-    flex-flow: column wrap;
-    margin: 0;
-    padding: 8px;
-    font-size: 11px;
-  }
-  .hidden {
-    display: none;
-  }
-  .close {
-    align-self: flex-end;
-    margin: 0;
-    padding-right: 20px;
-    color: #aaaaaa;
-    font-size: 33px;
-    font-weight: bold;
-  }
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  /*Gameboy*/
-
-  .gameboyContainer {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-  }
-  .gameboy {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    background-color: rgb(96, 84, 126);
-    height: 92vh;
-    width: 96vw;
-    border-radius: 10%;
-    box-shadow: 3px 5px 7px black;
-    border: 1px solid black;
-  }
-  .gameboyRow1 {
-    display: flex;
-    flex-flow: row nowrap;
-    margin: 0px 0px 1px 0px;
-    width: 97%;
-    font-family: "Press Start 2P", cursive;
-  }
-  .gameboyRow1_left {
-    width: 260px;
-    height: 55px;
-    order: 1;
-  }
-  .gameboyRow1_mid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 575px;
-    height: 55px;
-    order: 2;
-  }
-  .pokeType1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60px;
-    width: 100px;
-    font-size: 9px;
-  }
-  .name {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: max(20px, 18px);
-    border: 2px solid black;
-    padding: 3px;
-    font-size: 12px;
-  }
-  .pokeType2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100 px;
-    height: 60px;
-    font-size: 9px;
-  }
-  .gameboyRow1_right {
-    width: 260px;
-    height: 55px;
-    order: 3;
-  }
-  .gameboyRow2 {
-    display: flex;
-    flex-flow: column nowrap;
-    width: 100%;
-  }
-  .gameboyRow2_left {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-end;
-    height: 250px;
-    width: 100%;
-    order: 3;
-  }
-  /* dropdown2 is created in javascript when selecting pokemon type */
-  .dropdown2 {
-    order: 2;
-    margin: 10px 0px 2px 15px;
-    padding: 2px;
-    width: 135px;
-  }
-  .leftButtons {
-    background-color: rgb(146, 146, 146);
-    border: 1px solid black;
-    width: 60px;
-    height: 23px;
-    padding: 2px;
-    font-size: 12px;
-    border-radius: 5px;
-    position: absolute;
-  }
-  .selectMore {
-    left: 80px;
-    bottom: 32px;
-  }
-  .selectWeb {
-    right: 180px;
-    bottom: 32px;
-  }
-  .leftButtons:hover {
-    cursor: pointer;
-    box-shadow: 1px 1px 0px black;
-  }
-  .gameboyRow2_mid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    height: 320px;
-    width: 91vw;
-    order: 1;
-    border: 1px solid black;
-    box-shadow: 0px 1px 0px black;
-    margin-bottom: 25 px;
-  }
-  .gameboyRow2_midBox {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: gray;
-    height: 275px;
-    width: 290px;
-    align-self: center;
-  }
-  .gameboyRow2_midBox img {
-    height: 13vh;
-    width: 20vw;
-  }
-  .gameboyRow2_right {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    height: 275px;
-    order: 2;
-    margin: 10px 0px 0px 0px;
-  }
-  .gameboyRow2_right #search {
-    padding: 3px;
-    width: 125px;
-    margin: 25px 0px 2px 10px;
-  }
-  .formLabel {
-    font-family: "Press Start 2P", cursive;
-    font-size: 10px;
-    margin-left: 30px;
-  }
-  #pokeTypeSelect {
-    margin: 5px 0px 0px 30px;
-    border: 1px solid rgba(0, 0, 0, 0.322);
-    border-radius: 3px;
-    padding: 2px;
-    width: 135px;
-  }
-  .dropdownSubmit {
-    order: 3;
-    width: 135px;
-    margin: 0px 10px 10px 25px;
-  }
-  .searchSubmit {
-    margin: 2px 0px 165px 10px;
-    width: 135px;
-  }
-  .submitButton,
-  .dropdownSubmit {
-    background-color: rgb(117, 126, 207);
-    color: black;
-    font-weight: bold;
-    font-size: 15px;
-    border: 2px solid transparent;
-    border-radius: 2px;
-  }
-  .submitButton:hover,
-  .dropdownSubmit:hover {
-    cursor: pointer;
-    color: white;
-    border: 2px solid black;
-  }
-  .button1,
-  .button2 {
-    background-color: gray;
-    padding: 5px;
-    border: 1px solid transparent;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  .button1 {
-    position: absolute;
-    color: black;
-    margin-left: 100px;
-    right: 60px;
-    bottom: 160px;
-  }
-  .button2 {
-    position: absolute;
-    right: 100px;
-    bottom: 110px;
-  }
-  .btnA_tooltip {
-    visibility: hidden;
-    width: 80px;
-    background-color: rgb(61, 61, 61);
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    font-size: 10px;
-    position: absolute;
-    z-index: 1;
-    top: 150%;
-    left: 250%;
-    opacity: 0;
-    transition: 0.3s;
-  }
-  .btnB_tooltip {
-    visibility: hidden;
-    width: 80px;
-    background-color: rgb(61, 61, 61);
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    font-size: 10px;
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 260%;
-    opacity: 0;
-    transition: 0.3s;
-  }
-  .button1:hover .btnA_tooltip {
-    visibility: visible;
-    opacity: 1;
-  }
-  .button2 {
-    color: black;
-    margin-left: 60px;
-  }
-  .gameboyRow2_right a {
-    text-decoration: none;
-  }
-  .button1:hover,
-  .button2:hover {
-    border: 2px solid black;
-  }
-  /* D-PAD */
-  .d-pad {
-    order: 1;
-    height: 60px;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    bottom: 125px;
-    left: 25px;
-  }
-  .d-pad a {
-    text-decoration: none;
-    font-size: 25px;
-    color: rgb(90, 90, 90);
-    border: 1px solid rgb(146, 146, 146);
-    background-color: rgb(146, 146, 146);
-    overflow: hidden;
-  }
-  .d-pad a:hover {
-    color: black;
-  }
-  .up {
-    align-self: center;
-    order: 1;
-    padding: 8px 10px 15px 10px;
-  }
-  .down {
-    align-self: center;
-    order: 3;
-    padding: 15px 10px 8px 10px;
-    box-shadow: 0px 2px 0px black;
-  }
-  .right {
-    order: 2;
-    padding: 2px 5px 8px 35px;
-    box-shadow: 2px 2px 0px black;
-  }
-  .right_tooltip {
-    visibility: hidden;
-    width: 80px;
-    background-color: rgb(49, 49, 49);
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    font-size: 10px;
-    position: absolute;
-    z-index: 1;
-    left: 150%;
-    opacity: 0;
-    transition: 0.3s;
-    margin-left: -60px;
-  }
-  .d_leftRight:hover .right_tooltip {
-    visibility: visible;
-    opacity: 1;
-  }
-  .left {
-    order: 2;
-    padding: 2px 35px 8px 5px;
-    box-shadow: 0px 2px 0px black;
-  }
-
-  /* END D-PAD */
-  .vents {
-    display: none;
-    width: 125px;
-    border: 1px solid black;
-    margin: 5px;
-    padding: 1px;
-    box-shadow: 0px 1px 1px black;
-    order: 5;
-  }
-  .vent1 {
-    margin-top: 30px;
-  }
 }
