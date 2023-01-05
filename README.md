@@ -7,7 +7,7 @@ Why? :
 
 What did I use? : 
 
-  I used a lot of JavaScript, CSS, and some HTML.
+  I used a lot of JavaScript, CSS, HTML, and of course the Pokemon API
 
 What did I learn? :  
 
