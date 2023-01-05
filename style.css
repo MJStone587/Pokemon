@@ -98,15 +98,15 @@ html {
   min-width: 85vw;
   min-height: 80vh;
   overflow: hidden;
-  border-radius: 20%;
-  box-shadow: 3px 5px 7px black;
+  border-radius: 14%;
+  box-shadow: 5px 5px 8px black;
 }
 .gameboyRow1 {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
-  min-height: 8vh;
+  height: calc(75px + (75 - 40) * ((100vw - 300px) / (1920 - 300)));
   width: 100%;
   margin: 0.4rem 0rem 0.4rem 0rem;
   font-family: "Press Start 2P", cursive;
@@ -308,13 +308,11 @@ form label {
 /* D-PAD */
 .d-pad {
   order: 1;
-  height: 9.5rem;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
   margin: 0;
-  margin-top: 90px;
 }
 .d-pad a {
   text-decoration: none;
