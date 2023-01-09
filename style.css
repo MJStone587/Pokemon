@@ -380,7 +380,7 @@ form label {
   margin-top: 30px;
 }
 
-@media only screen and (max-width: 412px) {
+@media only screen and (max-width: 414px) {
   .gameboyRow2 {
     flex-flow: column nowrap;
   }
@@ -397,7 +397,7 @@ form label {
     order: 2;
   }
   .selectMore {
-    margin: 0;
+    margin: 0rem;
   }
   .leftButtons {
     border: 1px solid black;
@@ -428,7 +428,7 @@ form label {
   }
   .gameboyRow2_right form {
     width: 70%;
-    margin: 0rem;
+    margin: 0rem 0rem 0rem 6rem;
   }
   .vents {
     display: none;
@@ -437,6 +437,16 @@ form label {
     display: none;
   }
   .button2 {
+    display: none;
+  }
+  .right_tooltip {
+    visibility: hidden;
+    display: none;
+  }
+  .btnA_tooltip {
+    display: none;
+  }
+  .btnB_tooltip {
     display: none;
   }
 }
