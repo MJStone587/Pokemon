@@ -107,7 +107,6 @@ html {
   align-items: center;
   justify-content: center;
   height: calc(75px + (75 - 40) * ((100vw - 300px) / (1920 - 300)));
-  width: 100%;
   margin: 0.4rem 0rem 0.4rem 0rem;
   font-family: "Press Start 2P", cursive;
   border-top-right-radius: 20%;
@@ -115,12 +114,12 @@ html {
 }
 .gameboyRow1 h1 {
   margin: 0rem 1rem;
-  font-size: calc(20px + (24 - 20) * ((100vw - 300px) / (1600 - 300)));
+  font-size: calc(12px + (28 - 12) * ((100vw - 300px) / (1920 - 300)));
   border: 2px solid black;
-  padding: 0.5rem;
+  padding: 0.2rem;
 }
 .gameboyRow1 h3 {
-  font-size: calc(16px + (18 - 16) * ((100vw - 300px) / (1600 - 300)));
+  font-size: calc(8px + (18 - 8) * ((100vw - 300px) / (1920 - 300)));
 }
 .gameboyRow2 {
   display: flex;
@@ -379,4 +378,65 @@ form label {
 }
 .vent1 {
   margin-top: 30px;
+}
+
+@media only screen and (max-width: 412px) {
+  .gameboyRow2 {
+    flex-flow: column nowrap;
+  }
+  .gameboyRow2_mid {
+    width: 55vw;
+    order: 1;
+  }
+  .gameboyRow2_left {
+    width: 100%;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    row-gap: 10px;
+    order: 2;
+  }
+  .selectMore {
+    margin: 0;
+  }
+  .leftButtons {
+    border: 1px solid black;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
+  .gameboyRow2_right {
+    flex-flow: row wrap;
+    order: 3;
+    row-gap: 0;
+  }
+  .gameboyRow2_right #search {
+    width: 35%;
+    height: 1rem;
+  }
+  .submitButton,
+  .dropdownSubmit {
+    height: 1.5rem;
+    width: 35%;
+  }
+  #pokeTypeSelect {
+    height: 1.5rem;
+  }
+  .dropdown2 {
+    width: 45%;
+    height: 1.5rem;
+  }
+  .gameboyRow2_right form {
+    width: 70%;
+    margin: 0rem;
+  }
+  .vents {
+    display: none;
+  }
+  .button1 {
+    display: none;
+  }
+  .button2 {
+    display: none;
+  }
 }
