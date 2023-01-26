@@ -3,7 +3,7 @@ Site Preview: https://mjstone587.github.io/Pokemon/
 
 Why? : 
 
-  I built this small program to practice working with API and as a fan of Pokemon I was always frustrated using the Serebii site. I wanted a smaller more concise pokemon site that gave me the information I wanted without having to slog may way through serebii. 
+  I built this small program to practice working with API and as a fan of Pokemon I was always frustrated using the Serebii site. I wanted a smaller more concise pokemon site that gave me the information I wanted without having to slog my way through numerous serebii pages. 
 
 What did I use? : 
 
