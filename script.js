@@ -1,25 +1,21 @@
 "use strict";
 
 /* variable assignment */
-const searchSubmit = document.querySelector(".searchSubmit");
-const selectMore = document.querySelector(".selectMore");
+const searchSubmit = document.querySelector(".search-submit");
+const selectMore = document.querySelector(".select-more");
 const close = document.querySelector(".close");
 const modal = document.querySelector(".modal");
-const content = document.querySelector(".modalContent");
-const modalEgg = document.querySelector(".modalEgg");
-let modalName = document.querySelector(".modalName").innerHTML;
-const modalStats = document.querySelector(".modalStats");
+const content = document.querySelector(".modal-content");
+const modalEgg = document.querySelector(".modal-egg");
+const modalName = document.querySelector(".modal-name").textContent;
+const modalStats = document.querySelector(".modal-stats");
 const rightBtn = document.querySelector(".right");
 const leftBtn = document.querySelector(".left");
 const upBtn = document.querySelector(".up");
 const downBtn = document.querySelector(".down");
-const selectWeb = document.querySelector(".selectWeb");
-const tooltipText = document.querySelector(".tooltipText");
-const btnAtooltip = document.querySelector(".btnA_tooltip");
-const btnBtooltip = document.querySelector(".btnB_tooltip");
-const btnA = document.querySelector("buttonA");
-const btn1 = document.querySelector(".button1");
-const btn2 = document.querySelector(".button2");
+const selectWeb = document.querySelector(".select-web");
+const btn1 = document.querySelector(".button-a");
+const btn2 = document.querySelector(".button-b");
 
 const type1 = ".pokeType1";
 const type2 = ".pokeType2";
@@ -37,46 +33,46 @@ btn1.addEventListener("click", function () {
 btn2.addEventListener("click", function () {
   window.open("https://www.serebii.net/", "_blank");
 });
-/* function to change pokemon types display */
+/* function to change pokemon types display at top of gamebro*/
 const typeDisplay = function (data) {
   /* change pokemon types displayed and if there is more than one pokemon type change subsequent fields */
   if (data.types.length == 2) {
-    document.querySelector(".pokeType1").innerHTML =
+    document.querySelector(".pokeType1").textContent =
       data.types[0].type.name.charAt(0).toUpperCase() +
       data.types[0].type.name.slice(1);
-    document.querySelector(".pokeType2").innerHTML =
+    document.querySelector(".pokeType2").textContent =
       data.types[1].type.name.charAt(0).toUpperCase() +
       data.types[1].type.name.slice(1);
-    document.querySelector(".pokeType3").innerHTML = " ";
+    document.querySelector(".pokeType3").textContent = " ";
     /* call function to change color of pokemon types */
     colorChange(type1);
     colorChange(type2);
   } else if (data.types.length == 3) {
-    document.querySelector(".pokeType1").innerHTML =
+    document.querySelector(".pokeType1").textContent =
       data.types[0].type.name.charAt(0).toUpperCase() +
       data.types[0].type.name.slice(1);
-    document.querySelector(".pokeType2").innerHTML =
+    document.querySelector(".pokeType2").textContent =
       data.types[1].type.name.charAt(0).toUpperCase() +
       data.types[1].type.name.slice(1);
-    document.querySelector(".pokeType3").innerHTML =
+    document.querySelector(".pokeType3").textContent =
       data.types[2].type.name.charAt(0).toUpperCase() +
       data.types[2].type.name.slice(1);
     colorChange(type1);
     colorChange(type2);
     colorChange(type3);
   } else {
-    document.querySelector(".pokeType1").innerHTML =
+    document.querySelector(".pokeType1").textContent =
       data.types[0].type.name.charAt(0).toUpperCase() +
       data.types[0].type.name.slice(1);
-    document.querySelector(".pokeType2").innerHTML = " ";
-    document.querySelector(".pokeType3").innerHTML = " ";
+    document.querySelector(".pokeType2").textContent = " ";
+    document.querySelector(".pokeType3").textContent = " ";
     colorChange(type1);
   }
 };
 
 /* get base stats from API and add to modal gets input from apiSearch() */
 const baseStats = (data) => {
-  modalStats.innerHTML = "Base Stats: ";
+  modalStats.textContent = "Base Stats: ";
   var arr = [];
   for (let i = 0; i < data.stats.length; i++) {
     arr.push(
@@ -95,15 +91,15 @@ const baseStats = (data) => {
 /* function to change "evolve into" data on modal from api call. Takes input from apiSearch()  */
 const evolutionChain = (species) => {
   let evolveUrl = species.evolution_chain.url;
-  let modalEvoChain = document.querySelector(".modalEvoChain");
-  modalEvoChain.innerHTML = "Evolution Chain: ";
+  let modalEvoChain = document.querySelector(".modal-evo-chain");
+  modalEvoChain.textContent = "Evolution Chain: ";
   const errorArr = [];
   fetch(evolveUrl)
     .then((response) => response.json())
     .then((data) => {
       try {
         if (data.chain.evolves_to.length > 1) {
-          modalEvoChain.innerHTML =
+          modalEvoChain.textContent =
             "Evolution Chain: " +
             data.chain.species.name.charAt(0).toUpperCase() +
             data.chain.species.name.slice(1) +
@@ -117,7 +113,7 @@ const evolutionChain = (species) => {
           data.chain.evolves_to.length > 1 &&
           data.chain.evolves_to.evolves_to.length > 1
         ) {
-          modalEvoChain.innerHTML =
+          modalEvoChain.textContent =
             "Evolution Chain: " +
             data.chain.species.name.charAt(0).toUpperCase() +
             data.chain.species.name.slice(1) +
@@ -141,7 +137,7 @@ const evolutionChain = (species) => {
           data.chain.evolves_to.length > 1 &&
           data.chain.evolves_to.evolves_to.length > 0
         ) {
-          modalEvoChain.innerHTML =
+          modalEvoChain.textContent =
             "Evolution Chain: " +
             data.chain.species.name.charAt(0).toUpperCase() +
             data.chain.species.name.slice(1) +
@@ -157,8 +153,8 @@ const evolutionChain = (species) => {
               .toUpperCase() +
             data.chain.evolves_to[0].evolves_to[0].species.name.slice(1);
         } else if (data.chain.evolves_to.length > 0) {
-          // differentiation from pokemon like pansear and conkeldurr PERSONAL NOTE'
-          modalEvoChain.innerHTML =
+          // differentiation from pokemon like pansear and conkeldurr with unique api array
+          modalEvoChain.textContent =
             "Evolution Chain: " +
             data.chain.species.name.charAt(0).toUpperCase() +
             data.chain.species.name.slice(1) +
@@ -166,7 +162,7 @@ const evolutionChain = (species) => {
             data.chain.evolves_to[0].species.name.charAt(0).toUpperCase() +
             data.chain.evolves_to[0].species.name.slice(1);
           if (data.chain.evolves_to[0].evolves_to[0].is_baby == false) {
-            modalEvoChain.innerHTML =
+            modalEvoChain.textContent =
               "Evolution Chain: " +
               data.chain.species.name.charAt(0).toUpperCase() +
               data.chain.species.name.slice(1) +
@@ -183,7 +179,7 @@ const evolutionChain = (species) => {
           data.chain.evolves_to.length > 0 &&
           data.chain.evolves_to.evolves_to.length > 1
         ) {
-          modalEvoChain.innerHTML =
+          modalEvoChain.textContent =
             "Evolution Chain: " +
             data.chain.species.name.charAt(0).toUpperCase() +
             data.chain.species.name.slice(1) +
@@ -204,7 +200,7 @@ const evolutionChain = (species) => {
           data.chain.evolves_to.length > 0 &&
           data.chain.evolves_to.evolves_to.length > 0
         ) {
-          modalEvoChain.innerHTML =
+          modalEvoChain.textContent =
             "Evolution Chain: " +
             data.chain.species.name.charAt(0).toUpperCase() +
             data.chain.species.name.slice(1) +
@@ -222,7 +218,7 @@ const evolutionChain = (species) => {
         ) {
           console.log("fkit");
         } else {
-          modalEvoChain.innerHTML =
+          modalEvoChain.textContent =
             "Evolution Chain: " +
             data.chain.species.name.charAt(0).toUpperCase() +
             data.chain.species.name.slice(1);
@@ -235,7 +231,7 @@ const evolutionChain = (species) => {
 
 /* function to change Egg Groups modal information with selected pokemon data gets species from apiSearch() */
 const eggGroup = (species) => {
-  modalEgg.innerHTML = "Egg Groups:";
+  modalEgg.textContent = "Egg Groups:";
   var arr = [];
   for (let i = 0; i < species.egg_groups.length; i++) {
     arr.push(
@@ -271,12 +267,12 @@ const searchByID = function (id) {
       document.getElementById("backDefault").src = data.sprites.back_default;
       document.getElementById("backShiny").src = data.sprites.back_shiny;
       /* change name of pokemon displayed to name of pokemon in api call and capitalize first letter*/
-      document.querySelector(".name").innerHTML =
+      document.querySelector(".name").textContent =
         data.name.charAt(0).toUpperCase() + data.name.slice(1);
       /* change name of pokemon displayed in modalto name of pokemon in api call and capitalize first letter*/
-      document.querySelector(".modalName").innerHTML =
+      document.querySelector(".modal-name").textContent =
         data.name.charAt(0).toUpperCase() + data.name.slice(1);
-      document.querySelector(".modalName").style.textDecoration = "underline";
+      document.querySelector(".modal-name").style.textDecoration = "underline";
       /* typeDisplay function changes color of pokemon types and fills elements necessary*/
       typeDisplay(data);
       idNum = data.id;
@@ -300,26 +296,25 @@ const apiSearchByName = function (search) {
       baseStats(data);
       typeDisplay(data);
       idNum = data.id;
-      console.log(data);
       /* based on searched pokemon name, retrieve sprites and replace current sprites */
       document.getElementById("defaultSprite").src = data.sprites.front_default;
       document.getElementById("defaultShiny").src = data.sprites.front_shiny;
       document.getElementById("backDefault").src = data.sprites.back_default;
       document.getElementById("backShiny").src = data.sprites.back_shiny;
       /* change name of pokemon displayed to name of pokemon in api call and capitalize first letter*/
-      document.querySelector(".name").innerHTML =
+      document.querySelector(".name").textContent =
         data.name.charAt(0).toUpperCase() + data.name.slice(1);
       /* change name of pokemon displayed in modalto name of pokemon in api call and capitalize first letter*/
-      document.querySelector(".modalName").innerHTML =
+      document.querySelector(".modal-name").textContent =
         data.name.charAt(0).toUpperCase() + data.name.slice(1);
-      document.querySelector(".modalName").style.textDecoration = "underline";
+      document.querySelector(".modal-name").style.textDecoration = "underline";
       /* typeDisplay function changes color of pokemon types and fills elements necessary*/
     });
 };
 
 /* function with switch statement to change text color based on the type of the pokemon */
 const colorChange = function (type) {
-  let pokeType = document.querySelector(type).innerHTML.toLowerCase();
+  let pokeType = document.querySelector(type).textContent.toLowerCase();
   switch (pokeType) {
     case "electric":
       document.querySelector(type).style.color = "yellow";
@@ -358,13 +353,13 @@ const colorChange = function (type) {
       document.querySelector(type).style.color = "#bb31af";
       break;
     case "flying":
-      document.querySelector(type).style.color = "#bb94fa";
+      document.querySelector(type).style.color = "#9962f0";
       break;
     case "bug":
       document.querySelector(type).style.color = "#5f9d37";
       break;
     case "rock":
-      document.querySelector(type).style.color = "#afc49d";
+      document.querySelector(type).style.color = "#BED2C7";
       break;
     case "ghost":
       document.querySelector(type).style.color = "#382844";
@@ -438,19 +433,19 @@ close.onclick = function () {
   modal.style.display = "none";
 };
 
-/* Fetch all pokemon TYPES from api call and populate select options*/
+/* Fetch all pokemon TYPES from api call and populate select dropdown options*/
 const pokemonTypes = function () {
   fetch("https://pokeapi.co/api/v2/type/?limit=18/")
     .then((response) => response.json())
     .then((data) => {
       for (let i = 0; i < data.results.length; i++) {
-        const selectType = document.getElementById("pokeTypeSelect");
+        const selectType = document.getElementById("type-select");
         const option = document.createElement("option");
         let capitalize =
           data.results[i].name.charAt(0).toUpperCase() +
           data.results[i].name.slice(1);
         option.value = data.results[i].name;
-        option.innerHTML = capitalize;
+        option.textContent = capitalize;
         selectType.add(option, null);
       }
     });
@@ -460,10 +455,10 @@ pokemonTypes();
 /* submit button click event*/
 const submitClick = function () {
   document
-    .querySelector(".gameboyRow2_right")
+    .querySelector(".gamebro-row2-right")
     .addEventListener("click", function (event) {
       /* grab data from correct element depending on which submit button is selected */
-      if (event.target.classList.contains("searchSubmit")) {
+      if (event.target.classList.contains("search-submit")) {
         /* store the data within the search field and make it all lowercase*/
         const search = document.getElementById("search").value.toLowerCase();
         /* use data within the search field as paramenters for api call */
@@ -476,26 +471,22 @@ const submitClick = function () {
 };
 submitClick();
 
-/* create and populate second dropdown list from the type selected*/
+/* create and populate second dropdown list from the TYPE select dropdown*/
 function changeValue() {
   const arr = [];
   changeCounter++;
   if (changeCounter <= 1) {
     //get the poke type from the poketypeselect and store it in a variable
-    let typeName = document.getElementById("pokeTypeSelect").value;
+    let typeName = document.getElementById("type-select").value;
     // store data to create new select element under header
     const newSelect = document.createElement("select");
-    const header = document.querySelector(".gameboyRow2_right");
+    const header = document.querySelector(".row2-search-tools");
     const newButton = document.createElement("button");
     header.append(newSelect);
     header.append(newButton);
     newSelect.classList.add("dropdown2");
-    newButton.innerHTML = "Submit";
+    newButton.textContent = "Submit";
     newButton.classList.add("dropdownSubmit");
-    btnAtooltip.style.top = "55.5%";
-    btnAtooltip.style.right = "22%";
-    btnBtooltip.style.top = "60%";
-    btnBtooltip.style.right = "23%";
     fetch(`https://pokeapi.co/api/v2/type/${typeName}`)
       .then((response) => response.json())
       .then((data) => {
@@ -513,12 +504,12 @@ function changeValue() {
         for (let i = 0; i < arr.length; i++) {
           const newOption = document.createElement("option");
           newOption.value = arr[i];
-          newOption.innerHTML = arr[i];
+          newOption.textContent = arr[i];
           newSelect.add(newOption, null);
         }
       });
   } else if (changeCounter > 1) {
-    let typeName = document.getElementById("pokeTypeSelect").value;
+    let typeName = document.getElementById("type-select").value;
     const selectEl = document.querySelector(".dropdown2");
     for (let i = selectEl.options.length - 1; i >= 0; i--) {
       selectEl.remove(i);
@@ -540,7 +531,7 @@ function changeValue() {
         for (let i = 0; i < arr.length; i++) {
           const newOption = document.createElement("option");
           newOption.value = arr[i];
-          newOption.innerHTML = arr[i];
+          newOption.textContent = arr[i];
           selectEl.add(newOption, null);
         }
       });

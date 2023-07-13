@@ -4,46 +4,50 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css"/>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="icon"
       type="image/x-icon"
       href="./images/favicon_io/favicon-32x32.png"
     />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <title>Pokemon Index</title>
   </head>
 
   <body class="bodyContainer">
-    <main class="gameboyContainer">
-      <div class="gameboy">
-        <div class="gameboyRow1">
+      <div class="gamebro">
+        <div class="gamebro-row1">
             <h3 class="pokeType1"></h3>
             <h1 class="name">Gamebro</h1>
             <h3 class="pokeType2"></h3>
             <h3 class="pokeType3"></h3>
         </div>
-
-        <div class="gameboyRow2">
-          <div class="gameboyRow2_left">
-          <div class="d-pad">
-            <div class="d_up">
-              <a href="#" class="up">&#9650;</a>
+        <div class="gamebro-row2">
+          <div class="gamebro-row2-left">
+            <div class="dpad-container">
+              <div class="dpad-row dpad-row-1">
+                <button class="dpad-btn up"><span class="material-symbols-outlined">
+                  arrow_drop_up
+                  </span></button>
+              </div>
+              <div class="dpad-row dpad-row-2">
+                <button class="dpad-btn left"><span class="material-symbols-outlined">
+                  arrow_left
+                  </span></button>
+                <button class="dpad-btn right"><span class="material-symbols-outlined">
+                  arrow_right
+                  </span></button>
+              </div>
+              <div class="dpad-row dpad-row-3">
+                <button class="dpad-btn down"><span class="material-symbols-outlined">
+                  arrow_drop_down
+                  </span></button>
+              </div>  
             </div>
-            <div class="d_leftRight">
-              <a href="#" class="left">&#9664;</a>
-              <a href="#" class="right">&#9654;</a>
-              <span class="tooltipText right_tooltip">previous/next pokemon</span>
-            </div>
-            <div class="d_down">
-              <a href="#" class="down">&#9660;</a>
-            </div>
-          </div>
-          <button class="leftButtons selectMore">More</button>
-          <br />
-            <button class="leftButtons selectWeb">Website</button>
         </div>
 
-        <div class="gameboyRow2_mid">
+        <div class="gamebro-row2-mid">
             <img
               id="defaultSprite"
               src="./images/xern.png"
@@ -66,37 +70,44 @@
             />
         </div>
 
-        <div class="gameboyRow2_right">
-          <div class="button1">
-          <a
-            class="buttonAB buttonA"
-            >A</a
-          ><span class="tooltipText btnA_tooltip">type chart</span>
-        </div>
-          
-          <div class="button2">
-          <a class="buttonAB buttonB">B</a>
-          <span class="tooltipText btnB_tooltip">Serebii</span>
-        </div>
+        <div class="gamebro-row2-right">
 
-          <input id="search" type="text" placeholder="Search..." />
-            <button
-              class="submitButton searchSubmit"
-              id="searchSubmit"
-              type="submit"
-            >
-              Submit
-            </button>
-          <form class="searchForm">
-            <label class="formLabel">select by type...<br /></label>
-            <select
-              name="pokemonType"
-              id="pokeTypeSelect"
-              onchange="changeValue()"
-            >
-              <option value="Nothing" selected></option>
-            </select>
-          </form>
+          <div class="row2-button-row">
+            <a
+              class="ab-buttons button-a"
+              >A</a>     
+            <a class="ab-buttons button-b">B</a>
+          </div>
+
+            <div class="row2-search-tools">
+              <input id="search" type="text" placeholder="Search..." />
+                <button
+                  class="submit-button search-submit"
+                  id="search-submit"
+                  type="submit"
+                >
+                  Submit
+                </button>
+              <form class="search-form">
+                <label for="type-select" class="formLabel">select by type...<br /></label>
+                <select
+                  name="pokemonType"
+                  id="type-select"
+                  onchange="changeValue()"
+                >
+                  <option value="Nothing" selected></option>
+                </select>
+              </form>
+            </div>
+        </div>
+      </div>
+      <div class="gamebro-row3">
+        <div class="row3-left-container"></div>
+        <div class="row3-mid-container">
+          <button class="mid-buttons select-more">Select</button>
+          <button class="mid-buttons select-web">Start</button>
+        </div>
+        <div class="row3-right-container">
           <div class="vents vent1"></div>
           <div class="vents vent2"></div>
           <div class="vents vent3"></div>
@@ -107,18 +118,17 @@
 
     <!--Modal-->
     <div class="modal">
-      <div class="modalContent">
+      <div class="modal-content">
         <span class="close">&times;</span>
-        <div class="modalRow1">
-          <h1 class="modalName">Name:Please Select a Pokemon</h1>
-          <h2 class="modalEgg">Egg Groups:</h2>
-          <h2 class="modalEvoChain">Evolve Chain:</h2>
+        <div class="modal-row1">
+          <h1 class="modal-name">Please Select a Pokemon</h1>
+          <h2 class="modal-egg">Egg Groups: </h2>
+          <h2 class="modal-evo-chain">Evolve Chain: </h2>
         </div>
-        <div class="modalRow2">
-          <h2 class="modalStats">Base Stats:</h2>
+        <div class="modal-row2">
+          <h2 class="modal-stats">Base Stats: </h2>
         </div>
       </div>
-    </main>
   </body>
 
   <script src="script.js"></script>
