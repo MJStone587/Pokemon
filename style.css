@@ -32,8 +32,11 @@ html {
   width: 60%;
   border-radius: 5px;
 }
+.modal-content span {
+  margin: 0px;
+}
 .modal-content h1 {
-  padding: 20px 2px 2px 2px;
+  padding: 0px 0px 10px 0px;
   font-size: calc(16px + (30 - 16) * ((100vw - 300px) / (1920 - 300)));
 }
 .modal-content h2 {
@@ -44,14 +47,16 @@ html {
   flex-flow: column nowrap;
   justify-content: center;
   align-self: center;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
 .modal-row1 strong {
   font-weight: bolder;
 }
 .modal-name {
   font-family: "Press Start 2P", cursive;
+  margin: 0px;
+  padding: 0px;
 }
 .modal-row2 {
   display: flex;
